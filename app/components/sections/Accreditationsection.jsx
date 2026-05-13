@@ -76,7 +76,30 @@ export default function AccreditationSection() {
           >
             <span className="text-blue-600">Accredited</span>{" "}
             <i className="text-slate-400 not-italic">&</i>{" "}
-            <span className="text-emerald-600">Globally Recognized</span>
+       
+<span className="relative inline-block text-emerald-600">
+  Globally Recognized
+  <svg
+    className="absolute -bottom-1 left-0 w-full"
+    height="6"
+    viewBox="0 0 200 6"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0 5 Q50 0 100 4 Q150 8 200 3"
+      stroke="#10b981"
+      strokeWidth="3"
+      fill="none"
+      strokeLinecap="round"
+      style={{
+        strokeDasharray: 220,
+        strokeDashoffset: sectionVisible ? 0 : 220,
+        transition: "stroke-dashoffset 1.1s ease 0.5s",
+      }}
+    />
+  </svg>
+</span>
           </h2>
 
           <p className="text-sm md:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
@@ -143,6 +166,7 @@ export default function AccreditationSection() {
                 alt="Accreditations including NEASC, WASC, and Cognia"
                 width={720}
                 height={60}
+                loading="lazy"
                 className="h-auto w-full max-w-[560px] object-contain group-hover:scale-[1.02] transition-transform duration-500"
                 sizes="(min-width: 1280px) 560px, (min-width: 768px) 560px, 92vw"
               />
@@ -191,6 +215,7 @@ export default function AccreditationSection() {
                 alt="Recognitions including NCAA, College Board, and CID"
                 width={960}
                 height={139}
+                loading="lazy"
                 className="h-auto w-full max-w-[680px] object-contain group-hover:scale-[1.02] transition-transform duration-500"
                 sizes="(min-width: 1280px) 680px, (min-width: 768px) 680px, 92vw"
               />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ClipboardList, MessageCircle, MonitorPlay, BadgeCheck, ArrowRight } from "lucide-react";
 
 /* ─── DATA ───────────────────────────────────────────────────── */
@@ -393,7 +393,8 @@ export default function AdmissionProcess() {
   const spineRef    = useRef(null);
   const ctaRef      = useRef(null);
   const cardRefs    = useRef([]);
-  const dotRefs     = useRef([]);
+const dotRefs     = useRef([]);
+const [titleAnimated, setTitleAnimated] = useState(false);
 
   useEffect(() => {
     const targets = [
@@ -412,6 +413,7 @@ export default function AdmissionProcess() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("adm-in");
+            if (entry.target === titleRef.current) setTitleAnimated(true);
             observer.unobserve(entry.target);
           }
         });
@@ -613,7 +615,31 @@ export default function AdmissionProcess() {
         <div className="adm-head">
           <div ref={eyebrowRef} className="adm-eyebrow">✦ Simple 4-Step Process</div>
           <h2 ref={titleRef} className="adm-h2">
-            The <em>Admission</em> Process
+            The{" "}
+            <em className="relative inline-block" style={{ fontStyle: "normal" }}>
+              Admission
+              <svg
+                style={{ position: "absolute", bottom: -4, left: 0, width: "100%" }}
+                height="6"
+                viewBox="0 0 200 6"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 5 Q50 0 100 4 Q150 8 200 3"
+                  stroke="#1e6afb"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeLinecap="round"
+                  style={{
+                    strokeDasharray: 220,
+                    strokeDashoffset: titleAnimated ? 0 : 220,
+                    transition: "stroke-dashoffset 1.1s ease 0.5s",
+                  }}
+                />
+              </svg>
+            </em>{" "}
+            Process
           </h2>
           <p ref={subRef} className="adm-sub">
             Thoughtfully designed to give you a full tour of our learning environment
@@ -711,10 +737,10 @@ export default function AdmissionProcess() {
 
         {/* ── CTAs ── */}
         <div ref={ctaRef} className="adm-cta-wrap">
-          <a href="/enrollment" className="adm-btn-primary">
+          <a href="https://internationalschooling.org/enrollment" className="adm-btn-primary" target="_blank">
             Start Enrollment <ArrowRight size={14} strokeWidth={2.5} />
           </a>
-          <a href="/demo" className="adm-btn-outline">
+          <a href="https://internationalschooling.org/demo" className="adm-btn-outline" target="_blank">
             Book Free Demo
           </a>
         </div>

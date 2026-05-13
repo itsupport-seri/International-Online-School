@@ -153,19 +153,42 @@ export default function FAQSection() {
             FAQ
           </span>
 
-          <h2
-            style={{
-              fontSize: "clamp(1.85rem, 3.6vw, 2.75rem)",
-              fontWeight: 800,
-              color: "#0a0f1e",
-              lineHeight: 1.15,
-              margin: "0 0 12px",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Questions{" "}
-            <span style={{ color: "#1e6afb" }}>Parents Ask</span>
-          </h2>
+
+<h2
+  style={{
+    fontSize: "clamp(1.85rem, 3.6vw, 2.75rem)",
+    fontWeight: 800,
+    color: "#0a0f1e",
+    lineHeight: 1.15,
+    margin: "0 0 12px",
+    letterSpacing: "-0.02em",
+  }}
+>
+  Questions{" "}
+  <span style={{ color: "#1e6afb", position: "relative", display: "inline-block" }}>
+    Parents Ask
+    <svg
+      style={{ position: "absolute", bottom: -4, left: 0, width: "100%" }}
+      height="6"
+      viewBox="0 0 200 6"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 5 Q50 0 100 4 Q150 8 200 3"
+        stroke="#1e6afb"
+        strokeWidth="3"
+        fill="none"
+        strokeLinecap="round"
+        style={{
+          strokeDasharray: 220,
+          strokeDashoffset: visible ? 0 : 220,
+          transition: "stroke-dashoffset 1.1s ease 0.5s",
+        }}
+      />
+    </svg>
+  </span>
+</h2>
 
           <p
             style={{
@@ -344,7 +367,8 @@ export default function FAQSection() {
           }}
         >
           <a
-            href="#book-demo"
+            href="https://internationalschooling.org/demo"
+            target="_blank"
             style={{
               display: "inline-flex",
               alignItems: "center",

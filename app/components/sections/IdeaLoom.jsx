@@ -2,40 +2,40 @@
 
 import { useEffect, useRef, useState } from "react";
 import {
-  Users, Shield, Heart, Briefcase, FolderOpen, BookOpen, Globe,
-  Apple, Flame, Brain, GraduationCap, Wrench, Settings, Wifi, Coins,
-  Handshake, Lightbulb,
+    Users, Shield, Heart, Briefcase, FolderOpen, BookOpen, Globe,
+    Apple, Flame, Brain, GraduationCap, Wrench, Settings, Wifi, Coins,
+    Handshake, Lightbulb,
 } from "lucide-react";
 
 /* ══════════════════════════════════════════════════════════════
    RING DATA
 ══════════════════════════════════════════════════════════════ */
 const ring1Segments = [
-  { label: "Community of Learners",      icon: Users,        color: "#e53e3e", light: "#fff5f5" },
-  { label: "Community Stewardship",      icon: Shield,       color: "#dd6b20", light: "#fffaf0" },
-  { label: "Parent Involvement",         icon: Heart,        color: "#d69e2e", light: "#fffff0" },
-  { label: "Industry Collaborations",    icon: Briefcase,    color: "#38a169", light: "#f0fff4" },
-  { label: "Project Approach",           icon: FolderOpen,   color: "#3182ce", light: "#ebf8ff" },
-  { label: "Keystonian Portfolio Story", icon: BookOpen,     color: "#6b46c1", light: "#faf5ff" },
-  { label: "Out-reach Programmes",       icon: Globe,        color: "#d53f8c", light: "#fff5f7" },
+    { label: "Community of Learners", icon: Users, color: "#e53e3e", light: "#fff5f5" },
+    { label: "Community Stewardship", icon: Shield, color: "#dd6b20", light: "#fffaf0" },
+    { label: "Parent Involvement", icon: Heart, color: "#d69e2e", light: "#fffff0" },
+    { label: "Industry Collaborations", icon: Briefcase, color: "#38a169", light: "#f0fff4" },
+    { label: "Project Approach", icon: FolderOpen, color: "#3182ce", light: "#ebf8ff" },
+    { label: "Keystonian Portfolio Story", icon: BookOpen, color: "#6b46c1", light: "#faf5ff" },
+    { label: "Out-reach Programmes", icon: Globe, color: "#d53f8c", light: "#fff5f7" },
 ];
 
 const ring2Segments = [
-  { label: "Good Eats",           icon: Apple,         color: "#c53030", light: "#fff5f5" },
-  { label: "Passion Project",     icon: Flame,         color: "#c05621", light: "#fffaf0" },
-  { label: "Ways to Think",       icon: Brain,         color: "#b7791f", light: "#fffff0" },
-  { label: "Keystone Curriculum", icon: GraduationCap, color: "#276749", light: "#f0fff4" },
-  { label: "Ways to Work",        icon: Wrench,        color: "#2b6cb0", light: "#ebf8ff" },
-  { label: "Makers Hive",         icon: Settings,      color: "#553c9a", light: "#faf5ff" },
-  { label: "Digital Citizenship", icon: Wifi,          color: "#97266d", light: "#fff5f7" },
-  { label: "Money Matters",       icon: Coins,         color: "#285e61", light: "#e6fffa" },
+    { label: "Good Eats", icon: Apple, color: "#c53030", light: "#fff5f5" },
+    { label: "Passion Project", icon: Flame, color: "#c05621", light: "#fffaf0" },
+    { label: "Ways to Think", icon: Brain, color: "#b7791f", light: "#fffff0" },
+    { label: "Keystone Curriculum", icon: GraduationCap, color: "#276749", light: "#f0fff4" },
+    { label: "Ways to Work", icon: Wrench, color: "#2b6cb0", light: "#ebf8ff" },
+    { label: "Makers Hive", icon: Settings, color: "#553c9a", light: "#faf5ff" },
+    { label: "Digital Citizenship", icon: Wifi, color: "#97266d", light: "#fff5f7" },
+    { label: "Money Matters", icon: Coins, color: "#285e61", light: "#e6fffa" },
 ];
 
 const ring3Segments = [
-  { label: "Well-Being",       icon: Heart,      color: "#e53e3e", light: "#fff5f5" },
-  { label: "Working Tools",    icon: Settings,   color: "#3182ce", light: "#ebf8ff" },
-  { label: "Ways to Work",     icon: Handshake,  color: "#38a169", light: "#f0fff4" },
-  { label: "Inventure Skills", icon: Lightbulb,  color: "#d69e2e", light: "#fffff0" },
+    { label: "Well-Being", icon: Heart, color: "#e53e3e", light: "#fff5f5" },
+    { label: "Working Tools", icon: Settings, color: "#3182ce", light: "#ebf8ff" },
+    { label: "Ways to Work", icon: Handshake, color: "#38a169", light: "#f0fff4" },
+    { label: "Inventure Skills", icon: Lightbulb, color: "#d69e2e", light: "#fffff0" },
 ];
 
 /* ══════════════════════════════════════════════════════════════
@@ -48,38 +48,38 @@ const R3o = 152, R3i = 98;
 const GAP = 1.8;
 
 function polar(cx, cy, r, deg) {
-  const rad = ((deg - 90) * Math.PI) / 180;
-  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+    const rad = ((deg - 90) * Math.PI) / 180;
+    return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
 }
 
 function annularPath(cx, cy, ro, ri, startDeg, endDeg) {
-  const s1 = polar(cx, cy, ro, startDeg);
-  const e1 = polar(cx, cy, ro, endDeg);
-  const s2 = polar(cx, cy, ri, endDeg);
-  const e2 = polar(cx, cy, ri, startDeg);
-  const la = endDeg - startDeg > 180 ? 1 : 0;
-  return [
-    `M ${s1.x} ${s1.y}`,
-    `A ${ro} ${ro} 0 ${la} 1 ${e1.x} ${e1.y}`,
-    `L ${s2.x} ${s2.y}`,
-    `A ${ri} ${ri} 0 ${la} 0 ${e2.x} ${e2.y}`,
-    "Z",
-  ].join(" ");
+    const s1 = polar(cx, cy, ro, startDeg);
+    const e1 = polar(cx, cy, ro, endDeg);
+    const s2 = polar(cx, cy, ri, endDeg);
+    const e2 = polar(cx, cy, ri, startDeg);
+    const la = endDeg - startDeg > 180 ? 1 : 0;
+    return [
+        `M ${s1.x} ${s1.y}`,
+        `A ${ro} ${ro} 0 ${la} 1 ${e1.x} ${e1.y}`,
+        `L ${s2.x} ${s2.y}`,
+        `A ${ri} ${ri} 0 ${la} 0 ${e2.x} ${e2.y}`,
+        "Z",
+    ].join(" ");
 }
 
 function arcTextDef(cx, cy, r, startDeg, endDeg, id) {
-  const mid = (startDeg + endDeg) / 2;
-  const span = (endDeg - startDeg) * 0.7;
-  const from = mid - span / 2;
-  const to   = mid + span / 2;
-  const bottom = mid > 90 && mid < 270;
-  const s = polar(cx, cy, r, from);
-  const e = polar(cx, cy, r, to);
-  const la = to - from > 180 ? 1 : 0;
-  if (bottom) {
-    return <path key={id} id={id} d={`M ${e.x} ${e.y} A ${r} ${r} 0 ${la} 0 ${s.x} ${s.y}`} />;
-  }
-  return <path key={id} id={id} d={`M ${s.x} ${s.y} A ${r} ${r} 0 ${la} 1 ${e.x} ${e.y}`} />;
+    const mid = (startDeg + endDeg) / 2;
+    const span = (endDeg - startDeg) * 0.7;
+    const from = mid - span / 2;
+    const to = mid + span / 2;
+    const bottom = mid > 90 && mid < 270;
+    const s = polar(cx, cy, r, from);
+    const e = polar(cx, cy, r, to);
+    const la = to - from > 180 ? 1 : 0;
+    if (bottom) {
+        return <path key={id} id={id} d={`M ${e.x} ${e.y} A ${r} ${r} 0 ${la} 0 ${s.x} ${s.y}`} />;
+    }
+    return <path key={id} id={id} d={`M ${s.x} ${s.y} A ${r} ${r} 0 ${la} 1 ${e.x} ${e.y}`} />;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -396,301 +396,324 @@ const css = `
    COMPONENT
 ══════════════════════════════════════════════════════════════ */
 export default function IdeaLoom() {
-  const headRef  = useRef(null);
-  const leftRef  = useRef(null);
-  const rightRef = useRef(null);
-  const diagRef  = useRef(null);
-  const statsRef = useRef(null);
-  const tiltRef  = useRef(null);
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-  setMounted(true);
-}, []);
+    const headRef = useRef(null);
+    const leftRef = useRef(null);
+    const rightRef = useRef(null);
+    const diagRef = useRef(null);
+    const statsRef = useRef(null);
+    const tiltRef = useRef(null);
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
-  const [paused, setPaused] = useState(false);
-  const [tip, setTip]       = useState({ text: "", x: 0, y: 0, on: false });
+    const [paused, setPaused] = useState(false);
+    const [tip, setTip] = useState({ text: "", x: 0, y: 0, on: false });
 
-  /* ── Scroll reveals ── */
-  useEffect(() => {
-    const pairs = [
-      { el: headRef.current,  delay: 0   },
-      { el: leftRef.current,  delay: 100 },
-      { el: diagRef.current,  delay: 50  },
-      { el: rightRef.current, delay: 200 },
-      { el: statsRef.current, delay: 350 },
-    ];
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const p = pairs.find(p => p.el === e.target);
-          setTimeout(() => e.target.classList.add("vis"), p?.delay || 0);
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    pairs.forEach(({ el }) => el && io.observe(el));
-    return () => io.disconnect();
-  }, []);
+    /* ── Scroll reveals ── */
+    useEffect(() => {
+        const pairs = [
+            { el: headRef.current, delay: 0 },
+            { el: leftRef.current, delay: 100 },
+            { el: diagRef.current, delay: 50 },
+            { el: rightRef.current, delay: 200 },
+            { el: statsRef.current, delay: 350 },
+        ];
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const p = pairs.find(p => p.el === e.target);
+                    setTimeout(() => e.target.classList.add("vis"), p?.delay || 0);
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        pairs.forEach(({ el }) => el && io.observe(el));
+        return () => io.disconnect();
+    }, []);
 
-  /* ── 3D mouse tilt ── */
-  useEffect(() => {
-    const wrap  = tiltRef.current;
-    if (!wrap) return;
-    const inner = wrap.querySelector(".il-tilt-inner");
-    const onMove = (e) => {
-      const r  = wrap.getBoundingClientRect();
-      const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
-      const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
-      inner.style.transform = `rotateY(${dx * 6}deg) rotateX(${-dy * 6}deg)`;
+    /* ── 3D mouse tilt ── */
+    useEffect(() => {
+        const wrap = tiltRef.current;
+        if (!wrap) return;
+        const inner = wrap.querySelector(".il-tilt-inner");
+        const onMove = (e) => {
+            const r = wrap.getBoundingClientRect();
+            const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+            const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+            inner.style.transform = `rotateY(${dx * 6}deg) rotateX(${-dy * 6}deg)`;
+        };
+        const onLeave = () => { inner.style.transform = "rotateY(0) rotateX(0)"; };
+        wrap.addEventListener("mousemove", onMove);
+        wrap.addEventListener("mouseleave", onLeave);
+        return () => {
+            wrap.removeEventListener("mousemove", onMove);
+            wrap.removeEventListener("mouseleave", onLeave);
+        };
+    }, []);
+
+    const showTip = (e, label) => setTip({ text: label, x: e.clientX, y: e.clientY - 44, on: true });
+    const moveTip = (e) => setTip(t => ({ ...t, x: e.clientX, y: e.clientY - 44 }));
+    const hideTip = () => setTip(t => ({ ...t, on: false }));
+
+    const ps = paused ? { animationPlayState: "paused" } : {};
+
+    /* ── Render one ring ── */
+    const renderRing = (segments, ro, ri, textR, fontSize, darkText, spinClass) => {
+        const n = segments.length;
+        const segDeg = 360 / n;
+        const paths = [];
+        const defs = [];
+
+        segments.forEach((seg, i) => {
+            const s = i * segDeg + GAP / 2;
+            const e = (i + 1) * segDeg - GAP / 2;
+            const id = `ap-${spinClass}-${i}`;
+
+            defs.push(arcTextDef(CX, CY, textR, s, e, id));
+
+            paths.push(
+                <g
+                    key={i}
+                    className="seg"
+                    onMouseEnter={ev => showTip(ev, seg.label)}
+                    onMouseMove={moveTip}
+                    onMouseLeave={hideTip}
+                >
+                    {/* Segment fill */}
+                    <path
+                        d={annularPath(CX, CY, ro, ri, s, e)}
+                        fill={darkText ? seg.light : seg.color}
+                        stroke={darkText ? seg.color : "#fff"}
+                        strokeWidth={darkText ? "1.2" : "2"}
+                    />
+                    {/* Shimmer overlay */}
+                    <path
+                        d={annularPath(CX, CY, ro, ri, s, e)}
+                        fill={darkText ? seg.color : "url(#shimmer)"}
+                        opacity={darkText ? "0.08" : "0.15"}
+                        stroke="none"
+                    />
+                    {/* Curved label */}
+                    <text
+                        fontSize={fontSize}
+                        fontWeight="500"
+                        fontFamily="system-ui, sans-serif"
+                        fill={darkText ? seg.color : "#fff"}
+                        letterSpacing="0.06em"
+                    >
+                        <textPath href={`#${id}`} startOffset="50%" textAnchor="middle">
+                            {seg.label.toUpperCase()}
+                        </textPath>
+                    </text>
+                </g>
+            );
+        });
+
+        return (
+            <g className={spinClass} style={{ ...ps }}>
+                <defs>{defs}</defs>
+                {paths}
+                <circle cx={CX} cy={CY} r={ro} fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2" />
+                <circle cx={CX} cy={CY} r={ri} fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" />
+            </g>
+        );
     };
-    const onLeave = () => { inner.style.transform = "rotateY(0) rotateX(0)"; };
-    wrap.addEventListener("mousemove", onMove);
-    wrap.addEventListener("mouseleave", onLeave);
-    return () => {
-      wrap.removeEventListener("mousemove", onMove);
-      wrap.removeEventListener("mouseleave", onLeave);
+
+    /* ── Side card ── */
+    const renderCard = (seg, ringLabel) => {
+        const Icon = seg.icon;
+        return (
+            <div
+                className="il-card"
+                key={seg.label}
+                style={{ borderColor: seg.color + "33" }}
+            >
+                <div className="il-card-bar" style={{ background: seg.color }} />
+                <div className="il-card-ico" style={{ background: seg.light }}>
+                    <Icon size={14} color={seg.color} strokeWidth={2} />
+                </div>
+                <div className="il-card-info">
+                    <div className="il-card-ring" style={{ color: seg.color }}>{ringLabel}</div>
+                    <div className="il-card-name">{seg.label}</div>
+                </div>
+                <div className="il-dot" style={{ background: seg.color }} />
+            </div>
+        );
     };
-  }, []);
-
-  const showTip = (e, label) => setTip({ text: label, x: e.clientX, y: e.clientY - 44, on: true });
-  const moveTip = (e)        => setTip(t => ({ ...t, x: e.clientX, y: e.clientY - 44 }));
-  const hideTip = ()         => setTip(t => ({ ...t, on: false }));
-
-  const ps = paused ? { animationPlayState: "paused" } : {};
-
-  /* ── Render one ring ── */
-  const renderRing = (segments, ro, ri, textR, fontSize, darkText, spinClass) => {
-    const n      = segments.length;
-    const segDeg = 360 / n;
-    const paths  = [];
-    const defs   = [];
-
-    segments.forEach((seg, i) => {
-      const s   = i * segDeg + GAP / 2;
-      const e   = (i + 1) * segDeg - GAP / 2;
-      const id  = `ap-${spinClass}-${i}`;
-
-      defs.push(arcTextDef(CX, CY, textR, s, e, id));
-
-      paths.push(
-        <g
-          key={i}
-          className="seg"
-          onMouseEnter={ev => showTip(ev, seg.label)}
-          onMouseMove={moveTip}
-          onMouseLeave={hideTip}
-        >
-          {/* Segment fill */}
-          <path
-            d={annularPath(CX, CY, ro, ri, s, e)}
-            fill={darkText ? seg.light : seg.color}
-            stroke={darkText ? seg.color : "#fff"}
-            strokeWidth={darkText ? "1.2" : "2"}
-          />
-          {/* Shimmer overlay */}
-          <path
-            d={annularPath(CX, CY, ro, ri, s, e)}
-            fill={darkText ? seg.color : "url(#shimmer)"}
-            opacity={darkText ? "0.08" : "0.15"}
-            stroke="none"
-          />
-          {/* Curved label */}
-          <text
-            fontSize={fontSize}
-            fontWeight="500"
-            fontFamily="system-ui, sans-serif"
-            fill={darkText ? seg.color : "#fff"}
-            letterSpacing="0.06em"
-          >
-            <textPath href={`#${id}`} startOffset="50%" textAnchor="middle">
-              {seg.label.toUpperCase()}
-            </textPath>
-          </text>
-        </g>
-      );
-    });
 
     return (
-      <g className={spinClass} style={{ ...ps }}>
-        <defs>{defs}</defs>
-        {paths}
-        <circle cx={CX} cy={CY} r={ro} fill="none" stroke="rgba(255,255,255,0.5)"  strokeWidth="2"   />
-        <circle cx={CX} cy={CY} r={ri} fill="none" stroke="rgba(255,255,255,0.4)"  strokeWidth="1.5" />
-      </g>
-    );
-  };
+        <>
+            <style>{css}</style>
 
-  /* ── Side card ── */
-  const renderCard = (seg, ringLabel) => {
-    const Icon = seg.icon;
-    return (
-      <div
-        className="il-card"
-        key={seg.label}
-        style={{ borderColor: seg.color + "33" }}
-      >
-        <div className="il-card-bar" style={{ background: seg.color }} />
-        <div className="il-card-ico" style={{ background: seg.light }}>
-          <Icon size={14} color={seg.color} strokeWidth={2} />
-        </div>
-        <div className="il-card-info">
-          <div className="il-card-ring" style={{ color: seg.color }}>{ringLabel}</div>
-          <div className="il-card-name">{seg.label}</div>
-        </div>
-        <div className="il-dot" style={{ background: seg.color }} />
-      </div>
-    );
-  };
-
-  return (
-    <>
-      <style>{css}</style>
-
-      {/* Tooltip */}
-      <div
-        className={`il-tip${tip.on ? " on" : ""}`}
-        style={{ top: tip.y, left: tip.x, transform: "translate(-50%, 0)" }}
-      >
-        {tip.text}
-      </div>
-
-      <div className="il-page">
-
-        {/* ── Background SVG decorations ── */}
-        <svg
-          aria-hidden="true"
-          style={{
-            position: "absolute", inset: 0, width: "100%", height: "100%",
-            pointerEvents: "none", zIndex: 0, overflow: "hidden",
-          }}
-          viewBox="0 0 1400 900"
-          preserveAspectRatio="xMidYMid slice"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <ellipse cx="1200" cy="80"  rx="500" ry="380" fill="rgba(49,130,206,0.05)" />
-          <ellipse cx="100"  cy="820" rx="420" ry="320" fill="rgba(229,62,62,0.04)"  />
-          <ellipse cx="700"  cy="900" rx="360" ry="240" fill="rgba(56,161,105,0.04)" />
-          <polygon
-            points="0,0 120,-18 200,70 178,180 60,200 -30,110"
-            fill="none" stroke="#3182ce" strokeWidth="1" opacity="0.08"
-          />
-          <line x1="22"   y1="60" x2="22"   y2="840" stroke="#3182ce" strokeWidth="1" opacity="0.06" />
-          <line x1="1378" y1="60" x2="1378" y2="840" stroke="#3182ce" strokeWidth="1" opacity="0.06" />
-          <path d="M -40 900 Q 180 640 380 900" fill="none" stroke="#3182ce" strokeWidth="1.5" opacity="0.07" />
-          <polygon
-            points="1100,700 1220,880 980,880"
-            fill="none" stroke="#38a169" strokeWidth="1" opacity="0.07"
-          />
-        </svg>
-
-        <div className="il-inner">
-
-          {/* ── HEADER ── */}
-          <div ref={headRef} className="il-head">
-            <div>
-              <span className="il-pill">
-                <span className="il-pill-dot" />
-                Our Learning Framework
-              </span>
-            </div>
-            <h1 className="il-h1">
-              The <em>IDEA LOOM</em> Model
-            </h1>
-            <p className="il-desc">
-              A new-age school model grounded in value-oriented learning, cutting-edge skills
-              and a culture of global knowledge — nurturing future-ready learners.
-            </p>
-          </div>
-
-          {/* ── BODY ── */}
-          <div className="il-body">
-
-            {/* LEFT COLUMN */}
-            <div ref={leftRef} className="il-col">
-              {ring1Segments.slice(0, 4).map((s, i) => renderCard(s, `Outer · ${i + 1}`))}
-              {ring3Segments.slice(0, 2).map((s, i) => renderCard(s, `Inner · ${i + 1}`))}
+            {/* Tooltip */}
+            <div
+                className={`il-tip${tip.on ? " on" : ""}`}
+                style={{ top: tip.y, left: tip.x, transform: "translate(-50%, 0)" }}
+            >
+                {tip.text}
             </div>
 
-            {/* DIAGRAM */}
-            <div ref={diagRef} className="il-diag">
-              <div
-                className="il-tilt"
-                ref={tiltRef}
-                onMouseEnter={() => setPaused(true)}
-                onMouseLeave={() => setPaused(false)}
-              >
-                <div className="il-tilt-inner">
-                 <svg
-                    className="il-svg"
-                    viewBox="0 0 600 600"
+            <div className="il-page">
+                {/* ── Background SVG decorations ── */}
+                <svg
+                    aria-hidden="true"
+                    style={{
+                        position: "absolute", inset: 0, width: "100%", height: "100%",
+                        pointerEvents: "none", zIndex: 0, overflow: "hidden",
+                    }}
+                    viewBox="0 0 1400 900"
+                    preserveAspectRatio="xMidYMid slice"
                     xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <defs>
-                      <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%"   stopColor="#fff" stopOpacity=".4"  />
-                        <stop offset="50%"  stopColor="#fff" stopOpacity="0"   />
-                        <stop offset="100%" stopColor="#fff" stopOpacity=".2"  />
-                      </linearGradient>
-                    </defs>
+                >
+                    <ellipse cx="1200" cy="80" rx="500" ry="380" fill="rgba(49,130,206,0.05)" />
+                    <ellipse cx="100" cy="820" rx="420" ry="320" fill="rgba(229,62,62,0.04)" />
+                    <ellipse cx="700" cy="900" rx="360" ry="240" fill="rgba(56,161,105,0.04)" />
+                    <polygon
+                        points="0,0 120,-18 200,70 178,180 60,200 -30,110"
+                        fill="none" stroke="#3182ce" strokeWidth="1" opacity="0.08"
+                    />
+                    <line x1="22" y1="60" x2="22" y2="840" stroke="#3182ce" strokeWidth="1" opacity="0.06" />
+                    <line x1="1378" y1="60" x2="1378" y2="840" stroke="#3182ce" strokeWidth="1" opacity="0.06" />
+                    <path d="M -40 900 Q 180 640 380 900" fill="none" stroke="#3182ce" strokeWidth="1.5" opacity="0.07" />
+                    <polygon
+                        points="1100,700 1220,880 980,880"
+                        fill="none" stroke="#38a169" strokeWidth="1" opacity="0.07"
+                    />
+                </svg>
 
-                    {/* Outer deco rings */}
-                    <circle cx={CX} cy={CY} r={R1o + 9}  fill="none" stroke="#3182ce" strokeWidth="0.8" strokeDasharray="5 9"  opacity="0.18" />
-                    <circle cx={CX} cy={CY} r={R1o + 20} fill="none" stroke="#3182ce" strokeWidth="0.5" strokeDasharray="2 14" opacity="0.10" />
+                <div className="il-inner">
 
-                    {/* Rings — client-only to avoid SSR/client Math float mismatch */}
-                    {mounted && renderRing(ring1Segments, R1o, R1i, (R1o + R1i) / 2, "8",   false, "r1")}
-                    {mounted && renderRing(ring2Segments, R2o, R2i, (R2o + R2i) / 2, "7.5", true,  "r2")}
-                    {mounted && renderRing(ring3Segments, R3o, R3i, (R3o + R3i) / 2, "7.5", false, "r3")}
-
-                    {/* Center static bg */}
-                    <circle cx={CX} cy={CY} r={R3i - 2}  fill="#eff6ff" stroke="rgba(49,130,206,0.3)" strokeWidth="1.5" />
-                    <circle cx={CX} cy={CY} r={R3i - 14} fill="none"    stroke="rgba(49,130,206,0.10)" strokeWidth="10"  />
-                  </svg>
-                </div>
-
-                {/* Center HTML overlay — also client-only */}
-                {mounted && (
-                  <div className="il-core">
-                    <div className="il-core-circle">
-                      <div className="il-core-icon">💡</div>
-                      <div className="il-core-title">IDEA LOOM</div>
-                      <div className="il-core-sub">Framework</div>
+                    {/* ── HEADER ── */}
+                    <div ref={headRef} className="il-head">
+                        <div>
+                            <span className="il-pill">
+                                <span className="il-pill-dot" />
+                                Our Learning Framework
+                            </span>
+                        </div>
+                        <h1 className="il-h1">
+                            The{" "}
+                            <em className="relative inline-block">
+                                IDEA LOOM
+                                <svg
+                                    className="absolute -bottom-1 left-0 w-full"
+                                    height="6"
+                                    viewBox="0 0 200 6"
+                                    preserveAspectRatio="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M0 5 Q50 0 100 4 Q150 8 200 3"
+                                        stroke="#2b6cb0"
+                                        strokeWidth="3"
+                                        fill="none"
+                                        strokeLinecap="round"
+                                        style={{
+                                            strokeDasharray: 220,
+                                            strokeDashoffset: mounted ? 0 : 220,
+                                            transition: "stroke-dashoffset 1.1s ease 0.5s",
+                                        }}
+                                    />
+                                </svg>
+                            </em>{" "}
+                            Model
+                        </h1>
+                        <p className="il-desc">
+                            A new-age school model grounded in value-oriented learning, cutting-edge skills
+                            and a culture of global knowledge — nurturing future-ready learners.
+                        </p>
                     </div>
-                  </div>
-                )}
 
-                <div className="il-hint">
-                  {paused ? "▶ Paused · move away to resume" : "Hover to pause · tilt to explore"}
+                    {/* ── BODY ── */}
+                    <div className="il-body">
+
+                        {/* LEFT COLUMN */}
+                        <div ref={leftRef} className="il-col">
+                            {ring1Segments.slice(0, 4).map((s, i) => renderCard(s, `Outer · ${i + 1}`))}
+                            {ring3Segments.slice(0, 2).map((s, i) => renderCard(s, `Inner · ${i + 1}`))}
+                        </div>
+
+                        {/* DIAGRAM */}
+                        <div ref={diagRef} className="il-diag">
+                            <div
+                                className="il-tilt"
+                                ref={tiltRef}
+                                onMouseEnter={() => setPaused(true)}
+                                onMouseLeave={() => setPaused(false)}
+                            >
+                                <div className="il-tilt-inner">
+                                    <svg
+                                        className="il-svg"
+                                        viewBox="0 0 600 600"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <defs>
+                                            <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stopColor="#fff" stopOpacity=".4" />
+                                                <stop offset="50%" stopColor="#fff" stopOpacity="0" />
+                                                <stop offset="100%" stopColor="#fff" stopOpacity=".2" />
+                                            </linearGradient>
+                                        </defs>
+
+                                        {/* Outer deco rings */}
+                                        <circle cx={CX} cy={CY} r={R1o + 9} fill="none" stroke="#3182ce" strokeWidth="0.8" strokeDasharray="5 9" opacity="0.18" />
+                                        <circle cx={CX} cy={CY} r={R1o + 20} fill="none" stroke="#3182ce" strokeWidth="0.5" strokeDasharray="2 14" opacity="0.10" />
+
+                                        {/* Rings — client-only to avoid SSR/client Math float mismatch */}
+                                        {mounted && renderRing(ring1Segments, R1o, R1i, (R1o + R1i) / 2, "13", false, "r1")}
+                                        {mounted && renderRing(ring2Segments, R2o, R2i, (R2o + R2i) / 2, "11", true, "r2")}
+                                        {mounted && renderRing(ring3Segments, R3o, R3i, (R3o + R3i) / 2, "10", false, "r3")}
+
+                                        {/* Center static bg */}
+                                        <circle cx={CX} cy={CY} r={R3i - 2} fill="#eff6ff" stroke="rgba(49,130,206,0.3)" strokeWidth="1.5" />
+                                        <circle cx={CX} cy={CY} r={R3i - 14} fill="none" stroke="rgba(49,130,206,0.10)" strokeWidth="10" />
+                                    </svg>
+                                </div>
+
+                                {/* Center HTML overlay — also client-only */}
+                                {mounted && (
+                                    <div className="il-core">
+                                        <div className="il-core-circle">
+                                            <div className="il-core-icon">💡</div>
+                                            <div className="il-core-title">IDEA LOOM</div>
+                                            <div className="il-core-sub">Framework</div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="il-hint">
+                                    {paused ? "▶ Paused · move away to resume" : "Hover to pause · tilt to explore"}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* RIGHT COLUMN */}
+                        <div ref={rightRef} className="il-col right">
+                            {ring1Segments.slice(4).map((s, i) => renderCard(s, `Outer · ${i + 5}`))}
+                            {ring3Segments.slice(2).map((s, i) => renderCard(s, `Inner · ${i + 3}`))}
+                            {ring2Segments.slice(0, 3).map((s, i) => renderCard(s, `Middle · ${i + 1}`))}
+                        </div>
+
+                    </div>
+
+                    {/* ── STATS ── */}
+                    <div ref={statsRef} className="il-stats">
+                        {[
+                            { num: "3.8", label: "Average GPA" },
+                            { num: "100%", label: "University Acceptance" },
+                            { num: "7%", label: "Ivy League" },
+                            { num: "75%", label: "Intl. Scholarships" },
+                        ].map(({ num, label }) => (
+                            <div className="il-stat" key={label}>
+                                <div className="il-stat-n">{num}</div>
+                                <div className="il-stat-l">{label}</div>
+                            </div>
+                        ))}
+                    </div>
+
                 </div>
-              </div>
             </div>
-
-            {/* RIGHT COLUMN */}
-            <div ref={rightRef} className="il-col right">
-              {ring1Segments.slice(4).map((s, i)   => renderCard(s, `Outer · ${i + 5}`))}
-              {ring3Segments.slice(2).map((s, i)   => renderCard(s, `Inner · ${i + 3}`))}
-              {ring2Segments.slice(0, 3).map((s, i) => renderCard(s, `Middle · ${i + 1}`))}
-            </div>
-
-          </div>
-
-          {/* ── STATS ── */}
-          <div ref={statsRef} className="il-stats">
-            {[
-              { num: "3.8",  label: "Average GPA"          },
-              { num: "100%", label: "University Acceptance" },
-              { num: "7%",   label: "Ivy League"            },
-              { num: "75%",  label: "Intl. Scholarships"    },
-            ].map(({ num, label }) => (
-              <div className="il-stat" key={label}>
-                <div className="il-stat-n">{num}</div>
-                <div className="il-stat-l">{label}</div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </div>
-    </>
-  );
+        </>
+    );
 }

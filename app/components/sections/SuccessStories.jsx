@@ -516,7 +516,8 @@ export default function SuccessStories() {
           }}
         >
           <a
-            href="/success-stories"
+            href="https://internationalschooling.org/success-stories"
+            target="_blank"
             style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "14px 36px",

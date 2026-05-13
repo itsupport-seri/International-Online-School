@@ -1,25 +1,36 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/app/components/Navbar";
 import HeroSection from "@/app/components/sections/HeroSection";
-import WhyUsSection from "@/app/components/sections/WhyUsSection";
-import Accreditationsection from "@/app/components/sections/Accreditationsection";
-import ComparisonSection from "@/app/components/sections/ComparisonSection";
-import Reviewssection from "@/app/components/sections/Reviewssection";
-import Programssection from "@/app/components/sections/Programssection";
-import UniversityPathSection from "@/app/components/sections/UniversityPathSection";
-import Graduationsection from "@/app/components/sections/Graduationsection";
-import SchoolAppSection from "@/app/components/sections/SchoolAppSection";
-import FAQSection from "@/app/components/sections/FAQSection";
-import CTASection from "@/app/components/sections/CTASection";
-import AdmissionProcess from "@/app/components/sections/AdmissionProcess";
-import RequirementsSection from "@/app/components/sections/RequirementsSection";
-import ExperienceSection from "@/app/components/sections/ExperienceSection";
-import FeeStructureSection from "@/app/components/sections/FeeStructureSection";
-import FAQSection1 from "@/app/components/sections/FAQSection1";
-import AdmissionForm from "@/app/components/sections/AdmissionForm";
-import IdeaLoom from "@/app/components/sections/IdeaLoom";
-import SuccessStories from "@/app/components/sections/SuccessStories";
 import Footer from "./components/Footer";
 
+// Lazy load components below fold
+const IdeaLoom = dynamic(() => import("@/app/components/sections/IdeaLoom"), {
+  loading: () => <div className="h-80 bg-white animate-pulse" />,
+});
+
+const Accreditationsection = dynamic(() => import("@/app/components/sections/Accreditationsection"), {
+  loading: () => <div className="h-80 bg-white animate-pulse" />,
+});
+
+const Reviewssection = dynamic(() => import("@/app/components/sections/Reviewssection"), {
+  loading: () => <div className="h-96 bg-white animate-pulse" />,
+});
+
+const Graduationsection = dynamic(() => import("@/app/components/sections/Graduationsection"), {
+  loading: () => <div className="h-80 bg-white animate-pulse" />,
+});
+
+const SuccessStories = dynamic(() => import("@/app/components/sections/SuccessStories"), {
+  loading: () => <div className="h-96 bg-white animate-pulse" />,
+});
+
+const AdmissionProcess = dynamic(() => import("@/app/components/sections/AdmissionProcess"), {
+  loading: () => <div className="h-80 bg-white animate-pulse" />,
+});
+
+const FAQSection = dynamic(() => import("@/app/components/sections/FAQSection"), {
+  loading: () => <div className="h-96 bg-white animate-pulse" />,
+});
 
 export default function Home() {
   return (
@@ -33,24 +44,7 @@ export default function Home() {
         <Graduationsection />
         <SuccessStories />
         <AdmissionProcess />
-        {/* <RequirementsSection />
-        <ExperienceSection />
-        <FeeStructureSection />
-        <FAQSection1 />
-        <AdmissionForm /> */}
-
-
-
-        {/* <WhyUsSection /> */}
-        
-        {/* <ComparisonSection /> */}
-        
-        {/* <Programssection /> */}
-        {/* <UniversityPathSection /> */}
-        
-        {/* <SchoolAppSection /> */}
         <FAQSection />
-        {/* <CTASection /> */}
       </main>
       <Footer />
     </>

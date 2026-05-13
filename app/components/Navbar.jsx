@@ -63,10 +63,10 @@ const animationCSS = `
 `;
 
 const ctaLinks = [
-  { label: "Book Free Demo",    href: "/demo",        primary: false },
-  { label: "Request Callback",  href: "/callback",    primary: false },
+  { label: "Book Free Demo",    href: "https://internationalschooling.org/demo",        primary: false, external: true },
+  { label: "Request Callback",  href: "https://internationalschooling.org/callback",    primary: false, external: true },
   { label: "Log In",            href: "https://sms.internationalschooling.org/international-schooling/common/login", primary: false, external: true },
-  { label: "Enroll Now",        href: "/enrollment",  primary: true  },
+  { label: "Enroll Now",        href: "https://internationalschooling.org/enrollment",  primary: true , external: true },
 ];
 
 export default function Navbar() {
@@ -83,15 +83,11 @@ export default function Navbar() {
           const currentScrollY = window.scrollY;
 
           if (currentScrollY <= 0) {
-            // At the very top — always show
             setNavVisible(true);
           } else if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-            // Scrolling DOWN and past 80px threshold — hide
             setNavVisible(false);
-            // Close mobile menu when hiding
             setMenuOpen(false);
           } else if (currentScrollY < lastScrollY.current) {
-            // Scrolling UP — show
             setNavVisible(true);
           }
 
@@ -110,13 +106,12 @@ export default function Navbar() {
     <>
       <style>{animationCSS}</style>
 
-      {/* Spacer so page content isn't hidden under the fixed navbar */}
       <div className="h-[3.75rem] lg:h-[calc(3.75rem+2.5rem)]" aria-hidden="true" />
 
       <header className={`navbar-wrapper ${navVisible ? "navbar-visible" : "navbar-hidden"}`}>
 
         {/* ── ROW 1: CONTACT BAR (desktop only) ── */}
-        <div className="hidden lg:block bg-[#077ffb]">
+        <div className="hidden lg:block bg-[#0560cc]">
           <div className="max-w-screen-xl mx-auto px-6 flex items-center justify-between h-10">
 
             {/* Left — 24/7 WhatsApp */}
@@ -125,7 +120,6 @@ export default function Navbar() {
               rel="noreferrer"
               className="contact-chip flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 group">
 
-              {/* Green dot with pulse */}
               <span className="relative flex items-center justify-center w-4 h-4 shrink-0">
                 <span className="wa-pulse absolute inset-0 rounded-full" />
                 <MessageCircle size={12} className="text-[#25d366] relative z-10" />
@@ -133,17 +127,21 @@ export default function Navbar() {
               <span className="text-[11px] font-semibold text-white tracking-wide">
                 24/7 WhatsApp
               </span>
-              <span className="text-[11px] text-white/70 font-medium">
+              {/* ✅ was text-white/70 — now text-white */}
+              <span className="text-[11px] font-semibold text-white tracking-wide">
                 +1 (727) 390-2419
               </span>
             </a>
 
             {/* Center — Clock + hours */}
-            <div className="flex items-center gap-1.5 text-white/70">
+            {/* ✅ was text-white/70 — now text-white */}
+            <div className="flex items-center gap-1.5 text-white">
               <Clock size={11} className="shrink-0" />
-              <span className="text-[10.5px] font-medium tracking-wide">
+              {/* ✅ bumped font-medium → font-semibold for legibility */}
+              <span className="text-[10.5px] font-semibold tracking-wide">
                 Support available&nbsp;
-                <span className="text-white font-semibold">10:00 AM – 7:00 PM</span>
+                {/* ✅ was font-semibold — now font-bold to stand out more */}
+                <span className="text-white font-bold">10:00 AM – 7:00 PM</span>
                 &nbsp;(UTC +08:00)
               </span>
             </div>
@@ -154,19 +152,23 @@ export default function Navbar() {
               <a href="tel:+17273902419"
                 className="contact-chip flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10"
               >
-                <Phone size={11} className="text-white/80 shrink-0" />
+                {/* ✅ was text-white/80 — now text-white */}
+                <Phone size={11} className="text-white shrink-0" />
                 <span className="text-[11px] font-semibold text-white tracking-wide">
                   +1 (727) 390-2419
                 </span>
               </a>
 
-              <span className="text-white/25 text-xs mx-1">|</span>
+              {/* ✅ was text-white/25 (nearly invisible) — now text-white/60 */}
+              <span className="text-white/60 text-xs mx-1">|</span>
 
               <a href="mailto:info@internationalschooling.org"
                 className="contact-chip flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10"
               >
-                <Mail size={11} className="text-white/80 shrink-0" />
-                <span className="text-[11px] text-white/85 tracking-wide">
+                {/* ✅ was text-white/80 — now text-white */}
+                <Mail size={11} className="text-white shrink-0" />
+                {/* ✅ was text-white/85 — now text-white */}
+                <span className="text-[11px] font-semibold text-white tracking-wide">
                   info@internationalschooling.org
                 </span>
               </a>
@@ -174,8 +176,8 @@ export default function Navbar() {
               <a href="mailto:support@internationalschooling.org"
                 className="contact-chip flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10"
               >
-                <Mail size={11} className="text-white/80 shrink-0" />
-                <span className="text-[11px] text-white/85 tracking-wide">
+                <Mail size={11} className="text-white shrink-0" />
+                <span className="text-[11px] font-semibold text-white tracking-wide">
                   support@internationalschooling.org
                 </span>
               </a>
@@ -188,7 +190,6 @@ export default function Navbar() {
         <div className="bg-white shadow-md border-b border-gray-200">
           <div className="max-w-screen-xl mx-auto px-3 lg:px-6 flex items-center h-[3.75rem]">
 
-            {/* Logo */}
             <a href="/" className="shrink-0 flex items-center">
               <Image
                 src="/logo.avif"
@@ -200,9 +201,7 @@ export default function Navbar() {
               />
             </a>
 
-            {/* Desktop CTAs — flush right */}
             <div className="hidden lg:flex items-center gap-2 ml-auto">
-
               {ctaLinks.map((cta) =>
                 cta.primary ? (
                   <a key={cta.label}
@@ -224,10 +223,8 @@ export default function Navbar() {
                   </a>
                 )
               )}
-
             </div>
 
-            {/* Mobile — Enroll + hamburger */}
             <div className="flex lg:hidden items-center gap-2 ml-auto">
               <a href="/enrollment"
                 className="cta-btn px-3 py-1.5 text-[11px] font-bold tracking-wide bg-[#077ffb] text-white rounded-full"
@@ -253,8 +250,7 @@ export default function Navbar() {
         {menuOpen && (
           <div className="mobile-menu-anim lg:hidden bg-white shadow-xl border-b border-gray-200">
 
-            {/* Contact info stack */}
-            <div className="bg-[#077ffb] px-4 py-4 flex flex-col gap-3">
+            <div className="bg-[#0560cc] px-4 py-4 flex flex-col gap-3">
 
               <a href="https://api.whatsapp.com/send?phone=17273902419"
                 target="_blank"
@@ -266,7 +262,7 @@ export default function Navbar() {
                   <MessageCircle size={15} className="text-[#25d366] relative z-10" />
                 </span>
                 <div>
-                  <p className="text-[10px] font-bold text-white/60 uppercase tracking-widest">24/7 WhatsApp Support</p>
+                  <p className="text-[10px] font-bold text-white uppercase tracking-widest">24/7 WhatsApp Support</p>
                   <p className="text-[13px] font-semibold text-white">+1 (727) 390-2419</p>
                 </div>
               </a>
@@ -278,32 +274,33 @@ export default function Navbar() {
                   <Phone size={14} className="text-white" />
                 </span>
                 <div>
-                  <p className="text-[10px] font-bold text-white/60 uppercase tracking-widest">Available on Call</p>
+                  <p className="text-[10px] font-bold text-white uppercase tracking-widest">Available on Call</p>
                   <p className="text-[13px] font-semibold text-white">+1 (727) 390-2419</p>
-                  <p className="text-[10px] text-white/60 mt-0.5">10:00 AM – 7:00 PM (UTC +08:00)</p>
+                  {/* ✅ was text-white/60 — now text-white/80 */}
+                  <p className="text-[10px] text-white mt-0.5">10:00 AM – 7:00 PM (UTC +08:00)</p>
                 </div>
               </a>
 
               <div className="flex flex-col gap-2">
-                <p className="text-[10px] font-bold text-white/60 uppercase tracking-widest px-1">Email Us</p>
+                <p className="text-[10px] font-bold text-white uppercase tracking-widest px-1">Email Us</p>
                 {["info@internationalschooling.org", "support@internationalschooling.org"].map((email) => (
                   <a key={email}
                     href={`mailto:${email}`}
                     className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-2.5"
                   >
-                    <Mail size={13} className="text-white/70 shrink-0" />
-                    <span className="text-[12px] text-white/90 font-medium">{email}</span>
+                    <Mail size={13} className="text-white shrink-0" />
+                    {/* ✅ was text-white/90 — now text-white */}
+                    <span className="text-[12px] text-white font-medium">{email}</span>
                   </a>
                 ))}
               </div>
 
             </div>
 
-            {/* CTA buttons */}
             <div className="px-4 py-4 flex flex-col gap-2.5">
               {ctaLinks.map((cta) => (
-                <a
-                  key={cta.label}
+                
+                 <a key={cta.label}
                   href={cta.href}
                   target={cta.external ? "_blank" : undefined}
                   rel={cta.external ? "noreferrer" : undefined}

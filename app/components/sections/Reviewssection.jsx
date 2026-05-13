@@ -240,7 +240,8 @@ export default function ReviewsSection() {
             </div>
           </div>
           <a
-            href="#book-demo"
+            href="https://internationalschooling.org/demo"
+            target="_blank"
             className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-7 py-3 text-sm font-bold text-white shadow-md shadow-blue-200 hover:bg-blue-700 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 shrink-0"
           >
             Book Free Demo →
