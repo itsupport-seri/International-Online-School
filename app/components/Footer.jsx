@@ -455,7 +455,7 @@ export default function Footer() {
               <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "22px" }}>
                 {[
                   { icon: <MapPin size={13} color="#4da3ff" />,  text: "Dubai & India",                          href: null },
-                  { icon: <Phone size={13} color="#4da3ff" />,   text: "+91 99999 99999",                        href: "tel:+919999999999" },
+                  { icon: <Phone size={13} color="#4da3ff" />,   text: "+1 (727) 390-2419",                        href: "tel:+1 (727) 390-2419" },
                   { icon: <Mail size={13} color="#4da3ff" />,    text: "info@internationalschooling.org",        href: "mailto:info@internationalschooling.org" },
                 ].map(({ icon, text, href }) => (
                   <div key={text} style={{ display: "flex", alignItems: "flex-start", gap: "9px" }}>
