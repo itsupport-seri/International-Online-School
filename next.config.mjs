@@ -10,6 +10,7 @@ const nextConfig = {
       },
     ],
     formats: ["image/avif", "image/webp"],
+    qualities: [75, 80],
     deviceSizes: [320, 375, 425, 768, 1024, 1280, 1536],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year for production

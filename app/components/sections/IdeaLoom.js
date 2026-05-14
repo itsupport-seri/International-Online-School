@@ -4,42 +4,42 @@ import { useEffect, useRef, useState } from "react";
 import {
     Users, Shield, Heart, Briefcase, FolderOpen, BookOpen, Globe,
     Apple, Flame, Brain, GraduationCap, Wrench, Settings, Wifi, Coins,
-    Handshake, Lightbulb,
+    Handshake, Lightbulb, Award, Star, Video, UserCheck, BookMarked, School,
 } from "lucide-react";
 
 /* ══════════════════════════════════════════════════════════════
    RING DATA
 ══════════════════════════════════════════════════════════════ */
 const ring1Segments = [
-    { label: "Community of Learners", icon: Users, color: "#e53e3e", light: "#fff5f5" },
-    { label: "Community Stewardship", icon: Shield, color: "#dd6b20", light: "#fffaf0" },
-    { label: "Parent Involvement", icon: Heart, color: "#d69e2e", light: "#fffff0" },
-    { label: "Industry Collaborations", icon: Briefcase, color: "#38a169", light: "#f0fff4" },
-    { label: "Project Approach", icon: FolderOpen, color: "#3182ce", light: "#ebf8ff" },
-    { label: "Keystonian Portfolio Story", icon: BookOpen, color: "#6b46c1", light: "#faf5ff" },
-    { label: "Out-reach Programmes", icon: Globe, color: "#d53f8c", light: "#fff5f7" },
+    { label: "Global Community", icon: Users, color: "#e53e3e", light: "#fff5f5" },
+    { label: "NEASC Accredited", icon: Shield, color: "#dd6b20", light: "#fffaf0" },
+    { label: "Parent Partnership", icon: Heart, color: "#d69e2e", light: "#fffff0" },
+    { label: "University Pathways", icon: Briefcase, color: "#38a169", light: "#f0fff4" },
+    { label: "Project-Based Learning", icon: FolderOpen, color: "#3182ce", light: "#ebf8ff" },
+    { label: "Student Portfolio", icon: BookOpen, color: "#6b46c1", light: "#faf5ff" },
+    { label: "Outreach Programs", icon: Globe, color: "#d53f8c", light: "#fff5f7" },
 ];
 
 const ring2Segments = [
-    { label: "Good Eats", icon: Apple, color: "#c53030", light: "#fff5f5" },
-    { label: "Passion Project", icon: Flame, color: "#c05621", light: "#fffaf0" },
-    { label: "Ways to Think", icon: Brain, color: "#b7791f", light: "#fffff0" },
-    { label: "Keystone Curriculum", icon: GraduationCap, color: "#276749", light: "#f0fff4" },
-    { label: "Ways to Work", icon: Wrench, color: "#2b6cb0", light: "#ebf8ff" },
-    { label: "Makers Hive", icon: Settings, color: "#553c9a", light: "#faf5ff" },
+    { label: "AP Courses", icon: Award, color: "#c53030", light: "#fff5f5" },
+    { label: "Passion Projects", icon: Flame, color: "#c05621", light: "#fffaf0" },
+    { label: "Critical Thinking", icon: Brain, color: "#b7791f", light: "#fffff0" },
+    { label: "American Curriculum", icon: GraduationCap, color: "#276749", light: "#f0fff4" },
+    { label: "Flexible Learning", icon: Wrench, color: "#2b6cb0", light: "#ebf8ff" },
+    { label: "Makers & Innovation", icon: Settings, color: "#553c9a", light: "#faf5ff" },
     { label: "Digital Citizenship", icon: Wifi, color: "#97266d", light: "#fff5f7" },
-    { label: "Money Matters", icon: Coins, color: "#285e61", light: "#e6fffa" },
+    { label: "Financial Literacy", icon: Coins, color: "#285e61", light: "#e6fffa" },
 ];
 
 const ring3Segments = [
-    { label: "Well-Being", icon: Heart, color: "#e53e3e", light: "#fff5f5" },
-    { label: "Working Tools", icon: Settings, color: "#3182ce", light: "#ebf8ff" },
-    { label: "Ways to Work", icon: Handshake, color: "#38a169", light: "#f0fff4" },
-    { label: "Inventure Skills", icon: Lightbulb, color: "#d69e2e", light: "#fffff0" },
+    { label: "Student Well-Being", icon: Heart, color: "#e53e3e", light: "#fff5f5" },
+    { label: "EdTech Tools", icon: Settings, color: "#3182ce", light: "#ebf8ff" },
+    { label: "Live Online Classes", icon: Video, color: "#38a169", light: "#f0fff4" },
+    { label: "Future-Ready Skills", icon: Lightbulb, color: "#d69e2e", light: "#fffff0" },
 ];
 
 /* ══════════════════════════════════════════════════════════════
-   SVG GEOMETRY HELPERS
+   SVG GEOMETRY HELPERS  (unchanged)
 ══════════════════════════════════════════════════════════════ */
 const CX = 300, CY = 300;
 const R1o = 290, R1i = 220;
@@ -83,7 +83,7 @@ function arcTextDef(cx, cy, r, startDeg, endDeg, id) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   STYLES  — typography matched to AccreditationSection
+   STYLES  (completely unchanged)
 ══════════════════════════════════════════════════════════════ */
 const css = `
 .il-page{
@@ -108,8 +108,6 @@ const css = `
   margin:0 auto;
   padding:48px 20px 60px;
 }
-
-/* ── Header ── */
 .il-head{
   text-align:center;
   margin-bottom:40px;
@@ -118,7 +116,6 @@ const css = `
   transition:opacity .75s ease, transform .75s cubic-bezier(.16,1,.3,1);
 }
 .il-head.vis{ opacity:1; transform:translateY(0); }
-
 .il-pill{
   display:inline-flex;
   align-items:center;
@@ -141,18 +138,15 @@ const css = `
   flex-shrink:0;
   display:inline-block;
 }
-
-/* h1 — matches AccreditationSection h2 sizing exactly */
 .il-h1{
-  font-size:clamp(1.45rem, 3vw, 2.1rem);
-  font-weight:500;
-  color:var(--color-text-primary,#1a202c);
+  font-size:clamp(2.45rem, 3vw, 2.1rem);
+  font-weight:700;
+  color:var(--color-text-primary,#5b5b5b);
   line-height:1.2;
   margin-bottom:10px;
   letter-spacing:-.02em;
 }
-.il-h1 em{ color:#2b6cb0; font-style:normal; }
-
+.il-h1 em{ color:#1e52e1; font-style:normal; }
 .il-desc{
   font-size:.875rem;
   color:var(--color-text-secondary,#718096);
@@ -160,16 +154,12 @@ const css = `
   margin:0 auto;
   line-height:1.7;
 }
-
-/* ── Body grid ── */
 .il-body{
   display:grid;
   grid-template-columns:240px 1fr 240px;
   gap:24px;
   align-items:center;
 }
-
-/* ── Card columns ── */
 .il-col{
   display:flex;
   flex-direction:column;
@@ -180,7 +170,6 @@ const css = `
 }
 .il-col.right{ transform:translateX(40px); }
 .il-col.vis{ opacity:1; transform:translateX(0); }
-
 .il-card{
   background:var(--color-background-primary,#fff);
   border-radius:12px;
@@ -195,7 +184,6 @@ const css = `
   transition:transform .2s ease;
 }
 .il-card:hover{ transform:translateY(-2px); }
-
 .il-card-bar{
   position:absolute;
   left:0; top:0; bottom:0;
@@ -231,8 +219,6 @@ const css = `
   border:1.5px solid var(--color-background-primary,#fff);
 }
 .il-col.right .il-dot{ right:auto; left:-3px; }
-
-/* ── Diagram ── */
 .il-diag{
   position:relative;
   display:flex;
@@ -243,7 +229,6 @@ const css = `
   transition:opacity .9s ease .05s, transform .9s cubic-bezier(.16,1,.3,1) .05s;
 }
 .il-diag.vis{ opacity:1; transform:scale(1) translateY(0); }
-
 .il-tilt{
   perspective:1400px;
   position:relative;
@@ -254,23 +239,18 @@ const css = `
   transition:transform .12s ease-out;
   transform-style:preserve-3d;
 }
-
 .il-svg{
   width:100%;
   aspect-ratio:1;
   overflow:visible;
 }
-
 .seg{ cursor:pointer; transition:opacity .18s; }
 .seg:hover{ opacity:.88; }
-
 @keyframes cw  { to{ transform:rotate(360deg);  } }
 @keyframes ccw { to{ transform:rotate(-360deg); } }
 .r1{ animation:cw  38s linear infinite; transform-origin:300px 300px; }
 .r2{ animation:ccw 28s linear infinite; transform-origin:300px 300px; }
 .r3{ animation:cw  18s linear infinite; transform-origin:300px 300px; }
-
-/* Center overlay */
 .il-core{
   position:absolute;
   top:50%; left:50%;
@@ -302,7 +282,6 @@ const css = `
   text-transform:uppercase;
   margin-top:2px;
 }
-
 .il-hint{
   position:absolute;
   bottom:-22px; left:50%; transform:translateX(-50%);
@@ -313,8 +292,6 @@ const css = `
   color:#a0aec0;
   white-space:nowrap;
 }
-
-/* ── Stats bar ── */
 .il-stats{
   display:flex;
   justify-content:center;
@@ -329,7 +306,6 @@ const css = `
   transition:opacity .75s ease .35s, transform .75s cubic-bezier(.16,1,.3,1) .35s;
 }
 .il-stats.vis{ opacity:1; transform:translateY(0); }
-
 .il-stat{
   flex:1;
   padding:16px 10px;
@@ -337,7 +313,6 @@ const css = `
   border-right:0.5px solid var(--color-border-tertiary,rgba(0,0,0,0.08));
 }
 .il-stat:last-child{ border-right:none; }
-
 .il-stat-n{
   font-size:1.5rem;
   font-weight:500;
@@ -352,8 +327,6 @@ const css = `
   letter-spacing:.08em;
   text-transform:uppercase;
 }
-
-/* ── Tooltip ── */
 .il-tip{
   position:fixed;
   background:var(--color-background-primary,#fff);
@@ -371,8 +344,6 @@ const css = `
   white-space:nowrap;
 }
 .il-tip.on{ opacity:1; transform:translateY(0); }
-
-/* ── Responsive ── */
 @media(max-width:900px){
   .il-body{ grid-template-columns:1fr; gap:20px; }
   .il-col,.il-col.right{ flex-direction:row; flex-wrap:wrap; transform:translateY(30px) !important; }
@@ -403,14 +374,11 @@ export default function IdeaLoom() {
     const statsRef = useRef(null);
     const tiltRef = useRef(null);
     const [mounted, setMounted] = useState(false);
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    useEffect(() => { setMounted(true); }, []);
 
     const [paused, setPaused] = useState(false);
     const [tip, setTip] = useState({ text: "", x: 0, y: 0, on: false });
 
-    /* ── Scroll reveals ── */
     useEffect(() => {
         const pairs = [
             { el: headRef.current, delay: 0 },
@@ -432,7 +400,6 @@ export default function IdeaLoom() {
         return () => io.disconnect();
     }, []);
 
-    /* ── 3D mouse tilt ── */
     useEffect(() => {
         const wrap = tiltRef.current;
         if (!wrap) return;
@@ -458,7 +425,6 @@ export default function IdeaLoom() {
 
     const ps = paused ? { animationPlayState: "paused" } : {};
 
-    /* ── Render one ring ── */
     const renderRing = (segments, ro, ri, textR, fontSize, darkText, spinClass) => {
         const n = segments.length;
         const segDeg = 360 / n;
@@ -469,39 +435,25 @@ export default function IdeaLoom() {
             const s = i * segDeg + GAP / 2;
             const e = (i + 1) * segDeg - GAP / 2;
             const id = `ap-${spinClass}-${i}`;
-
             defs.push(arcTextDef(CX, CY, textR, s, e, id));
-
             paths.push(
-                <g
-                    key={i}
-                    className="seg"
+                <g key={i} className="seg"
                     onMouseEnter={ev => showTip(ev, seg.label)}
                     onMouseMove={moveTip}
                     onMouseLeave={hideTip}
                 >
-                    {/* Segment fill */}
-                    <path
-                        d={annularPath(CX, CY, ro, ri, s, e)}
+                    <path d={annularPath(CX, CY, ro, ri, s, e)}
                         fill={darkText ? seg.light : seg.color}
                         stroke={darkText ? seg.color : "#fff"}
-                        strokeWidth={darkText ? "1.2" : "2"}
-                    />
-                    {/* Shimmer overlay */}
-                    <path
-                        d={annularPath(CX, CY, ro, ri, s, e)}
+                        strokeWidth={darkText ? "1.2" : "2"} />
+                    <path d={annularPath(CX, CY, ro, ri, s, e)}
                         fill={darkText ? seg.color : "url(#shimmer)"}
                         opacity={darkText ? "0.08" : "0.15"}
-                        stroke="none"
-                    />
-                    {/* Curved label */}
-                    <text
-                        fontSize={fontSize}
-                        fontWeight="500"
+                        stroke="none" />
+                    <text fontSize={fontSize} fontWeight="500"
                         fontFamily="system-ui, sans-serif"
                         fill={darkText ? seg.color : "#fff"}
-                        letterSpacing="0.06em"
-                    >
+                        letterSpacing="0.06em">
                         <textPath href={`#${id}`} startOffset="50%" textAnchor="middle">
                             {seg.label.toUpperCase()}
                         </textPath>
@@ -520,15 +472,10 @@ export default function IdeaLoom() {
         );
     };
 
-    /* ── Side card ── */
     const renderCard = (seg, ringLabel) => {
         const Icon = seg.icon;
         return (
-            <div
-                className="il-card"
-                key={seg.label}
-                style={{ borderColor: seg.color + "33" }}
-            >
+            <div className="il-card" key={seg.label} style={{ borderColor: seg.color + "33" }}>
                 <div className="il-card-bar" style={{ background: seg.color }} />
                 <div className="il-card-ico" style={{ background: seg.light }}>
                     <Icon size={14} color={seg.color} strokeWidth={2} />
@@ -546,82 +493,48 @@ export default function IdeaLoom() {
         <>
             <style>{css}</style>
 
-            {/* Tooltip */}
-            <div
-                className={`il-tip${tip.on ? " on" : ""}`}
-                style={{ top: tip.y, left: tip.x, transform: "translate(-50%, 0)" }}
-            >
+            <div className={`il-tip${tip.on ? " on" : ""}`}
+                style={{ top: tip.y, left: tip.x, transform: "translate(-50%, 0)" }}>
                 {tip.text}
             </div>
 
             <div className="il-page">
-                {/* ── Background SVG decorations ── */}
-                <svg
-                    aria-hidden="true"
-                    style={{
-                        position: "absolute", inset: 0, width: "100%", height: "100%",
-                        pointerEvents: "none", zIndex: 0, overflow: "hidden",
-                    }}
-                    viewBox="0 0 1400 900"
-                    preserveAspectRatio="xMidYMid slice"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg aria-hidden="true"
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 0, overflow: "hidden" }}
+                    viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
                     <ellipse cx="1200" cy="80" rx="500" ry="380" fill="rgba(49,130,206,0.05)" />
                     <ellipse cx="100" cy="820" rx="420" ry="320" fill="rgba(229,62,62,0.04)" />
                     <ellipse cx="700" cy="900" rx="360" ry="240" fill="rgba(56,161,105,0.04)" />
-                    <polygon
-                        points="0,0 120,-18 200,70 178,180 60,200 -30,110"
-                        fill="none" stroke="#3182ce" strokeWidth="1" opacity="0.08"
-                    />
+                    <polygon points="0,0 120,-18 200,70 178,180 60,200 -30,110" fill="none" stroke="#3182ce" strokeWidth="1" opacity="0.08" />
                     <line x1="22" y1="60" x2="22" y2="840" stroke="#3182ce" strokeWidth="1" opacity="0.06" />
                     <line x1="1378" y1="60" x2="1378" y2="840" stroke="#3182ce" strokeWidth="1" opacity="0.06" />
                     <path d="M -40 900 Q 180 640 380 900" fill="none" stroke="#3182ce" strokeWidth="1.5" opacity="0.07" />
-                    <polygon
-                        points="1100,700 1220,880 980,880"
-                        fill="none" stroke="#38a169" strokeWidth="1" opacity="0.07"
-                    />
+                    <polygon points="1100,700 1220,880 980,880" fill="none" stroke="#38a169" strokeWidth="1" opacity="0.07" />
                 </svg>
 
                 <div className="il-inner">
 
-                    {/* ── HEADER ── */}
+                    {/* ── HEADER — content updated ── */}
                     <div ref={headRef} className="il-head">
-                        <div>
-                            <span className="il-pill">
-                                <span className="il-pill-dot" />
-                                Our Learning Framework
-                            </span>
-                        </div>
                         <h1 className="il-h1">
-                            The{" "}
+                            Our Learning{" "}
                             <em className="relative inline-block">
-                                IDEA LOOM
-                                <svg
-                                    className="absolute -bottom-1 left-0 w-full"
-                                    height="6"
-                                    viewBox="0 0 200 6"
-                                    preserveAspectRatio="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M0 5 Q50 0 100 4 Q150 8 200 3"
-                                        stroke="#2b6cb0"
-                                        strokeWidth="3"
-                                        fill="none"
-                                        strokeLinecap="round"
+                                Framework
+                                <svg className="absolute -bottom-1 left-0 w-full" height="6"
+                                    viewBox="0 0 200 6" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 5 Q50 0 100 4 Q150 8 200 3"
+                                        stroke="#1e52e1" strokeWidth="3" fill="none" strokeLinecap="round"
                                         style={{
                                             strokeDasharray: 220,
                                             strokeDashoffset: mounted ? 0 : 220,
                                             transition: "stroke-dashoffset 1.1s ease 0.5s",
-                                        }}
-                                    />
+                                        }} />
                                 </svg>
-                            </em>{" "}
-                            Model
+                            </em>
                         </h1>
                         <p className="il-desc">
-                            A new-age school model grounded in value-oriented learning, cutting-edge skills
-                            and a culture of global knowledge — nurturing future-ready learners.
+                            A globally accredited American curriculum for KG–Grade 12, trusted by 15,000+ students
+                            across 190+ countries — delivered through live, flexible, and personalized online learning.
                         </p>
                     </div>
 
@@ -636,18 +549,11 @@ export default function IdeaLoom() {
 
                         {/* DIAGRAM */}
                         <div ref={diagRef} className="il-diag">
-                            <div
-                                className="il-tilt"
-                                ref={tiltRef}
+                            <div className="il-tilt" ref={tiltRef}
                                 onMouseEnter={() => setPaused(true)}
-                                onMouseLeave={() => setPaused(false)}
-                            >
+                                onMouseLeave={() => setPaused(false)}>
                                 <div className="il-tilt-inner">
-                                    <svg
-                                        className="il-svg"
-                                        viewBox="0 0 600 600"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
+                                    <svg className="il-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
                                         <defs>
                                             <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="100%">
                                                 <stop offset="0%" stopColor="#fff" stopOpacity=".4" />
@@ -655,29 +561,21 @@ export default function IdeaLoom() {
                                                 <stop offset="100%" stopColor="#fff" stopOpacity=".2" />
                                             </linearGradient>
                                         </defs>
-
-                                        {/* Outer deco rings */}
                                         <circle cx={CX} cy={CY} r={R1o + 9} fill="none" stroke="#3182ce" strokeWidth="0.8" strokeDasharray="5 9" opacity="0.18" />
                                         <circle cx={CX} cy={CY} r={R1o + 20} fill="none" stroke="#3182ce" strokeWidth="0.5" strokeDasharray="2 14" opacity="0.10" />
-
-                                        {/* Rings — client-only to avoid SSR/client Math float mismatch */}
                                         {mounted && renderRing(ring1Segments, R1o, R1i, (R1o + R1i) / 2, "13", false, "r1")}
                                         {mounted && renderRing(ring2Segments, R2o, R2i, (R2o + R2i) / 2, "11", true, "r2")}
                                         {mounted && renderRing(ring3Segments, R3o, R3i, (R3o + R3i) / 2, "10", false, "r3")}
-
-                                        {/* Center static bg */}
                                         <circle cx={CX} cy={CY} r={R3i - 2} fill="#eff6ff" stroke="rgba(49,130,206,0.3)" strokeWidth="1.5" />
                                         <circle cx={CX} cy={CY} r={R3i - 14} fill="none" stroke="rgba(49,130,206,0.10)" strokeWidth="10" />
                                     </svg>
                                 </div>
 
-                                {/* Center HTML overlay — also client-only */}
                                 {mounted && (
-                                    <div className="il-core">
+                                   <div className="il-core">
                                         <div className="il-core-circle">
                                             <div className="il-core-icon">💡</div>
-                                            <div className="il-core-title">IDEA LOOM</div>
-                                            <div className="il-core-sub">Framework</div>
+                                            <div className="il-core-title">Framework</div>
                                         </div>
                                     </div>
                                 )}
@@ -697,13 +595,13 @@ export default function IdeaLoom() {
 
                     </div>
 
-                    {/* ── STATS ── */}
+                    {/* ── STATS — updated to IS real numbers ── */}
                     <div ref={statsRef} className="il-stats">
                         {[
-                            { num: "3.8", label: "Average GPA" },
+                            { num: "3.8", label: "Student Achievement" },
                             { num: "100%", label: "University Acceptance" },
-                            { num: "7%", label: "Ivy League" },
-                            { num: "75%", label: "Intl. Scholarships" },
+                            { num: "7%", label: "Ivy League Acceptance" },
+                            { num: "75%", label: "International Scholarships" },
                         ].map(({ num, label }) => (
                             <div className="il-stat" key={label}>
                                 <div className="il-stat-n">{num}</div>

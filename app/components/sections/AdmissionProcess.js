@@ -615,9 +615,9 @@ const [titleAnimated, setTitleAnimated] = useState(false);
         <div className="adm-head">
           <div ref={eyebrowRef} className="adm-eyebrow">✦ Simple 4-Step Process</div>
           <h2 ref={titleRef} className="adm-h2">
-            The{" "}
+            Complete
             <em className="relative inline-block" style={{ fontStyle: "normal" }}>
-              Admission
+              Enrollment
               <svg
                 style={{ position: "absolute", bottom: -4, left: 0, width: "100%" }}
                 height="6"

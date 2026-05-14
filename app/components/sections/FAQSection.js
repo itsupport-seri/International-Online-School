@@ -39,6 +39,23 @@ const faqs = [
     answer:
       "The best online school offers an accredited curriculum, expert teachers, and flexible learning with strong student support — which is exactly what we provide.",
   },
+
+
+  {
+    question: "Can my child get into a college/university after getting a certificate/diploma from International Schooling?",
+    answer:
+      "Upon successful completion of their course or level with International Schooling, they will be issued an American certificate or high school diploma. You may provide this certificate or diploma to their academic counselor or guide at the college or university to which you are applying.",
+  },
+  {
+    question: "What is the fee structure?",
+    answer:
+      "Each course has a different fee based on the grade, level, and subjects. Once you register with us, you will be guided through our fee structure before making the final payment applicable to you.",
+  },
+  {
+    question: "What are the enrollment dates and deadlines?",
+    answer:
+      "There is a fixed deadline to complete enrollment for group learning. However, for one-to-one learning, enrollments at International Schooling are open throughout the year.",
+  },
 ];
 
 export default function FAQSection() {
@@ -125,70 +142,45 @@ export default function FAQSection() {
             transition: "opacity 0.6s ease, transform 0.6s ease",
           }}
         >
-          <span
+          
+
+
+          <h2
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.13em",
-              textTransform: "uppercase",
-              color: "#1e6afb",
-              background: "#eef3ff",
-              border: "1px solid rgba(30,106,251,0.18)",
-              padding: "5px 14px",
-              borderRadius: 100,
-              marginBottom: 18,
+              fontSize: "clamp(1.85rem, 3.6vw, 2.75rem)",
+              fontWeight: 800,
+              color: "#0a0f1e",
+              lineHeight: 1.15,
+              margin: "0 0 12px",
+              letterSpacing: "-0.02em",
             }}
           >
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: "50%",
-                background: "#1e6afb",
-              }}
-            />
-            FAQ
-          </span>
-
-
-<h2
-  style={{
-    fontSize: "clamp(1.85rem, 3.6vw, 2.75rem)",
-    fontWeight: 800,
-    color: "#0a0f1e",
-    lineHeight: 1.15,
-    margin: "0 0 12px",
-    letterSpacing: "-0.02em",
-  }}
->
-  Questions{" "}
-  <span style={{ color: "#1e6afb", position: "relative", display: "inline-block" }}>
-    Parents Ask
-    <svg
-      style={{ position: "absolute", bottom: -4, left: 0, width: "100%" }}
-      height="6"
-      viewBox="0 0 200 6"
-      preserveAspectRatio="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M0 5 Q50 0 100 4 Q150 8 200 3"
-        stroke="#1e6afb"
-        strokeWidth="3"
-        fill="none"
-        strokeLinecap="round"
-        style={{
-          strokeDasharray: 220,
-          strokeDashoffset: visible ? 0 : 220,
-          transition: "stroke-dashoffset 1.1s ease 0.5s",
-        }}
-      />
-    </svg>
-  </span>
-</h2>
+            Frequently
+            <span style={{ color: "#1e6afb", position: "relative", display: "inline-block" }}>
+               Ask Questions
+              <svg
+                style={{ position: "absolute", bottom: -4, left: 0, width: "100%" }}
+                height="6"
+                viewBox="0 0 200 6"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 5 Q50 0 100 4 Q150 8 200 3"
+                  stroke="#1e6afb"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeLinecap="round"
+                  style={{
+                    strokeDasharray: 220,
+                    strokeDashoffset: visible ? 0 : 220,
+                    transition: "stroke-dashoffset 1.1s ease 0.5s",
+                  }}
+                />
+              </svg>
+              
+            </span>
+          </h2>
 
           <p
             style={{

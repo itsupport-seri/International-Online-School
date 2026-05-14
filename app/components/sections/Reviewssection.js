@@ -140,20 +140,23 @@ export default function ReviewsSection() {
   return (
     <section
       id="reviews"
-      className="relative scroll-mt-28 overflow-hidden border-y border-emerald-100 py-16 md:py-15"
-      style={{ background: "linear-gradient(160deg, #f8faff 0%, #f0fdf4 50%, #fefce8 100%)" }}
+
+      className="relative scroll-mt-28 overflow-hidden border-y border-blue-100 py-16 md:py-15"
+
+      style={{ background: "linear-gradient(160deg, #f8faff 0%, #eff6ff 50%, #f0f9ff 100%)" }}
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
+        {/* CHANGED: #bbf7d0 (green) → #bfdbfe (blue) */}
         <div className="absolute -top-20 right-0 w-[400px] h-[400px] rounded-full opacity-30"
-          style={{ background: "radial-gradient(circle, #bbf7d0 0%, transparent 70%)" }} />
+          style={{ background: "radial-gradient(circle, #bfdbfe 0%, transparent 70%)" }} />
         <div className="absolute bottom-0 -left-20 w-[350px] h-[350px] rounded-full opacity-20"
           style={{ background: "radial-gradient(circle, #bfdbfe 0%, transparent 70%)" }} />
-        {/* Subtle dot grid */}
+        {/* Subtle dot grid — CHANGED: #86efac (green) → #93c5fd (blue) */}
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="rdots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-              <circle cx="1.5" cy="1.5" r="1.2" fill="#86efac" fillOpacity="0.3" />
+              <circle cx="1.5" cy="1.5" r="1.2" fill="#93c5fd" fillOpacity="0.3" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#rdots)" />
@@ -172,19 +175,14 @@ export default function ReviewsSection() {
             transition: "opacity 0.7s ease, transform 0.7s ease",
           }}
         >
-          <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-1.5">
-            <span className="size-1.5 rounded-full bg-emerald-500 inline-block" />
-            <span className="text-emerald-700 font-semibold text-xs tracking-wide uppercase">
-              Real Parent Stories
-            </span>
-          </div>
-
           <h2 className="font-[family-name:var(--font-display)] text-[1.85rem] sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
             Trusted by Families{" "}
-            <span className="relative inline-block text-emerald-700">
+            {/* CHANGED: text-emerald-700 → text-blue-700 */}
+            <span className="relative inline-block text-blue-700">
               Worldwide
+              {/* CHANGED: stroke #10b981 (green) → #1d4ed8 (blue) */}
               <svg className="absolute -bottom-1 left-0 w-full" height="6" viewBox="0 0 200 6" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 5 Q50 0 100 4 Q150 8 200 3" stroke="#10b981" strokeWidth="3" fill="none" strokeLinecap="round"
+                <path d="M0 5 Q50 0 100 4 Q150 8 200 3" stroke="#1d4ed8" strokeWidth="3" fill="none" strokeLinecap="round"
                   style={{ strokeDasharray: 220, strokeDashoffset: headerVisible ? 0 : 220, transition: "stroke-dashoffset 1.1s ease 0.5s" }}
                 />
               </svg>
@@ -215,7 +213,7 @@ export default function ReviewsSection() {
           </div>
         </header>
 
-        {/* ── Video Grid — asymmetric layout ── */}
+        {/* ── Video Grid ── */}
         <div ref={gridRef} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review, i) => (
             <VideoCard key={review.id} review={review} index={i} visible={gridVisible} />
@@ -224,15 +222,18 @@ export default function ReviewsSection() {
 
         {/* ── Bottom CTA strip ── */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-between gap-5 rounded-3xl border border-emerald-200 bg-white px-7 py-6 shadow-sm"
+       
+          className="flex flex-col sm:flex-row items-center justify-between gap-5 rounded-3xl border border-blue-200 bg-white px-7 py-6 shadow-sm"
           style={{
             opacity: gridVisible ? 1 : 0,
             transition: "opacity 0.7s ease 0.7s",
           }}
         >
           <div className="flex items-center gap-3">
-            <div className="flex size-11 items-center justify-center rounded-2xl bg-emerald-100">
-              <Globe size={20} className="text-emerald-600" />
+            {/* CHANGED: bg-emerald-100 → bg-blue-100 */}
+            <div className="flex size-11 items-center justify-center rounded-2xl bg-blue-100">
+              {/* CHANGED: text-emerald-600 → text-blue-600 */}
+              <Globe size={20} className="text-blue-600" />
             </div>
             <div>
               <p className="font-bold text-slate-900 text-sm">Join Families From 190+ Countries</p>

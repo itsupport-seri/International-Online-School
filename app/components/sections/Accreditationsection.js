@@ -62,44 +62,38 @@ export default function AccreditationSection() {
             transition: "opacity 0.7s ease, transform 0.7s ease",
           }}
         >
-          {/* Label pill */}
-          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5">
-            <span className="size-1.5 rounded-full bg-blue-500 inline-block" />
-            <span className="text-blue-700 font-semibold text-xs tracking-wide uppercase">
-              World-Class Credentials
-            </span>
-          </div>
+
 
           <h2
             id="home-accreditation-title"
             className="font-[family-name:var(--font-display)] text-[1.85rem] sm:text-4xl font-extrabold text-slate-900 leading-tight"
           >
-            <span className="text-blue-600">Accredited</span>{" "}
+            <span className="text-slate-600">Fully Accredited</span>{" "}
             <i className="text-slate-400 not-italic">&</i>{" "}
-       
-<span className="relative inline-block text-emerald-600">
-  Globally Recognized
-  <svg
-    className="absolute -bottom-1 left-0 w-full"
-    height="6"
-    viewBox="0 0 200 6"
-    preserveAspectRatio="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M0 5 Q50 0 100 4 Q150 8 200 3"
-      stroke="#10b981"
-      strokeWidth="3"
-      fill="none"
-      strokeLinecap="round"
-      style={{
-        strokeDasharray: 220,
-        strokeDashoffset: sectionVisible ? 0 : 220,
-        transition: "stroke-dashoffset 1.1s ease 0.5s",
-      }}
-    />
-  </svg>
-</span>
+
+            <span className="relative inline-block text-blue-600">
+              Globally Recognized
+              <svg
+                className="absolute -bottom-1 left-0 w-full"
+                height="6"
+                viewBox="0 0 200 6"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 5 Q50 0 100 4 Q150 8 200 3"
+                  stroke="#1e52e1"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeLinecap="round"
+                  style={{
+                    strokeDasharray: 220,
+                    strokeDashoffset: sectionVisible ? 0 : 220,
+                    transition: "stroke-dashoffset 1.1s ease 0.5s",
+                  }}
+                />
+              </svg>
+            </span>
           </h2>
 
           <p className="text-sm md:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
@@ -189,21 +183,21 @@ export default function AccreditationSection() {
             }}
           >
             {/* Card accent bar */}
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-400 via-emerald-600 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
 
             {/* Background hover wash */}
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none rounded-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none rounded-3xl" />
 
             {/* Inner label */}
             <div className="relative flex items-center gap-2 mb-6">
-              <div className="flex size-8 items-center justify-center rounded-xl bg-emerald-100">
-                <Award size={15} className="text-emerald-600" />
+              <div className="flex size-8 items-center justify-center rounded-xl bg-blue-100">
+                <Award size={15} className="text-blue-600" />
               </div>
               <div>
                 <p className="text-xs font-bold text-slate-800 leading-tight">Global Recognitions</p>
                 <p className="text-[10px] text-slate-400 font-medium">Trusted by world institutions</p>
               </div>
-              <span className="ml-auto text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 rounded-full px-2.5 py-1">
+              <span className="ml-auto text-[10px] font-bold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-2.5 py-1">
                 ✓ Verified
               </span>
             </div>

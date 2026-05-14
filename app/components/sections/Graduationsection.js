@@ -111,7 +111,6 @@ export default function GraduationSection() {
       }}
     >
 
-
       {/* BG blobs + dots */}
       <div aria-hidden="true" style={{ position:"absolute", inset:0, pointerEvents:"none" }}>
         <div style={{ position:"absolute", top:"-80px", right:"-60px", width:"400px", height:"400px", borderRadius:"50%", background:"radial-gradient(circle,rgba(139,92,246,0.10) 0%,transparent 70%)" }} />
@@ -138,39 +137,21 @@ export default function GraduationSection() {
             transition: "opacity 0.7s ease, transform 0.7s ease",
           }}
         >
-          <div style={{ display:"flex", justifyContent:"center", marginBottom:"16px" }}>
-            <div style={{
-              display:"inline-flex", alignItems:"center", gap:"7px",
-              background:"rgba(139,92,246,0.08)", border:"1px solid rgba(139,92,246,0.22)",
-              borderRadius:"999px", padding:"5px 16px",
-            }}>
-              <GraduationCap size={13} color="#7c3aed" />
-              <span style={{ fontSize:"11px", fontWeight:700, color:"#6d28d9", textTransform:"uppercase", letterSpacing:"0.09em" }}>
-                Class of 2025
-              </span>
-            </div>
-          </div>
           <h2 style={{
             fontSize:"clamp(1.8rem,4vw,2.7rem)", fontWeight:800,
             color:"#0f172a", lineHeight:1.18, letterSpacing:"-0.022em",
           }}>
             Graduation Ceremony 2025 –{" "}
+            {/* CHANGED: removed gradient, now plain blue */}
             <span style={{
-              background:"linear-gradient(130deg,#7c3aed 0%,#2563eb 100%)",
-              WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text",
+              color: "#1d4ed8",
               position:"relative", display:"inline-block",
             }}>
               Dubai
               <svg aria-hidden="true" style={{ position:"absolute", bottom:"-7px", left:0, width:"100%", overflow:"visible" }}
                 height="7" viewBox="0 0 120 7" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="dubaiLine" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#7c3aed" />
-                    <stop offset="100%" stopColor="#2563eb" />
-                  </linearGradient>
-                </defs>
                 <path d="M0 6 Q30 0 60 5 Q90 10 120 3"
-                  stroke="url(#dubaiLine)" strokeWidth="2.8" fill="none" strokeLinecap="round"
+                  stroke="#1d4ed8" strokeWidth="2.8" fill="none" strokeLinecap="round"
                   style={{ strokeDasharray:140, strokeDashoffset: headerVisible ? 0 : 140, transition:"stroke-dashoffset 1.1s ease 0.5s" }}
                 />
               </svg>
@@ -225,13 +206,15 @@ export default function GraduationSection() {
                       />
                       {/* Dark overlay */}
                       <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top,rgba(15,23,42,0.55) 0%,transparent 55%)" }} />
-                      {/* Badge */}
+                      {/* Badge — CHANGED: moved to center */}
                       <div style={{
-                        position:"absolute", bottom:"16px", left:"18px",
+                        position:"absolute", bottom:"16px",
+                        left:"50%", transform:"translateX(-50%)",
                         display:"flex", alignItems:"center", gap:"6px",
                         background:"rgba(255,255,255,0.18)", backdropFilter:"blur(8px)",
                         borderRadius:"999px", padding:"5px 12px",
                         border:"1px solid rgba(255,255,255,0.3)",
+                        whiteSpace:"nowrap",
                       }}>
                         <GraduationCap size={12} color="#fff" />
                         <span style={{ fontSize:"11px", fontWeight:700, color:"#fff", letterSpacing:"0.05em" }}>
@@ -244,54 +227,79 @@ export default function GraduationSection() {
               </Swiper>
             </div>
 
-            {/* Controls row */}
+            {/* ── Controls row — CHANGED: centered label + dots + prev/next inline like SuccessStories ── */}
             <div style={{
-              display:"flex", alignItems:"center", justifyContent:"space-between",
-              marginTop:"20px", flexWrap:"wrap", gap:"12px",
+              textAlign: "center",
+              marginTop: "20px",
+              marginBottom: "4px",
             }}>
-              <div>
-                <p style={{ fontSize:"11px", fontWeight:700, textTransform:"uppercase", letterSpacing:"0.18em", color:"#059669", marginBottom:"2px" }}>
-                  Ceremony Moments
-                </p>
-                <p style={{ fontSize:"13px", color:"#64748b" }}>
-                  Slide {activeIndex + 1} of {slides.length}
-                </p>
-              </div>
+              {/* CHANGED: removed left-aligned label; now centered above pagination row */}
+              <p style={{
+                fontSize: "11px", fontWeight: 700,
+                textTransform: "uppercase", letterSpacing: "0.18em",
+                color: "#1d4ed8", marginBottom: "4px",
+              }}>
+                Ceremony Moments
+              </p>
+              <p style={{ fontSize: "13px", color: "#64748b", marginBottom: "16px" }}>
+                Slide {activeIndex + 1} of {slides.length}
+              </p>
 
-              {/* Dots */}
-              <div style={{ display:"flex", alignItems:"center", gap:"6px" }}>
-                {slides.map((_,i) => (
-                  <button key={i} onClick={() => swiperRef.current?.slideTo(i)}
-                    aria-label={`Go to slide ${i+1}`}
-                    style={{
-                      height:"10px", width: i === activeIndex ? "28px" : "10px",
-                      borderRadius:"999px", border:"none", cursor:"pointer", padding:0,
-                      background: i === activeIndex ? "#1d4ed8" : "#cbd5e1",
-                      transition:"width 0.35s ease, background 0.3s ease",
-                    }}
-                  />
-                ))}
-              </div>
+              {/* CHANGED: prev button + dots + next button all in one centered row */}
+              <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "16px",
+              }}>
+                {/* Prev */}
+                <button
+                  onClick={() => swiperRef.current?.slidePrev()}
+                  aria-label="Previous slide"
+                  style={{
+                    width:"42px", height:"42px", borderRadius:"50%",
+                    border:"1.5px solid #bfdbfe", background:"#eff6ff",
+                    display:"flex", alignItems:"center", justifyContent:"center",
+                    cursor:"pointer", transition:"background 0.2s, border-color 0.2s, transform 0.2s",
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.background="#dbeafe"; e.currentTarget.style.borderColor="#93c5fd"; e.currentTarget.style.transform="scale(1.08)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background="#eff6ff"; e.currentTarget.style.borderColor="#bfdbfe"; e.currentTarget.style.transform="scale(1)"; }}
+                >
+                  <ChevronLeft size={20} color="#1e40af" />
+                </button>
 
-              {/* Prev / Next */}
-              <div style={{ display:"flex", gap:"10px" }}>
-                {[
-                  { label:"Previous slide", icon:<ChevronLeft size={20} color="#1e40af" />, action:() => swiperRef.current?.slidePrev() },
-                  { label:"Next slide",     icon:<ChevronRight size={20} color="#1e40af" />, action:() => swiperRef.current?.slideNext() },
-                ].map(({ label, icon, action }) => (
-                  <button key={label} onClick={action} aria-label={label}
-                    style={{
-                      width:"44px", height:"44px", borderRadius:"50%",
-                      border:"1.5px solid #bfdbfe", background:"#eff6ff",
-                      display:"flex", alignItems:"center", justifyContent:"center",
-                      cursor:"pointer", transition:"background 0.2s, border-color 0.2s",
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.background="#dbeafe"; e.currentTarget.style.borderColor="#93c5fd"; }}
-                    onMouseLeave={e => { e.currentTarget.style.background="#eff6ff"; e.currentTarget.style.borderColor="#bfdbfe"; }}
-                  >
-                    {icon}
-                  </button>
-                ))}
+                {/* Dots */}
+                <div style={{ display:"flex", alignItems:"center", gap:"7px" }}>
+                  {slides.map((_, i) => (
+                    <button key={i} onClick={() => swiperRef.current?.slideTo(i)}
+                      aria-label={`Go to slide ${i+1}`}
+                      style={{
+                        height:"9px",
+                        width: i === activeIndex ? "30px" : "9px",
+                        borderRadius:"999px", border:"none", cursor:"pointer", padding:0,
+                        background: i === activeIndex ? "#1d4ed8" : "#bfdbfe",
+                        transition:"width 0.35s ease, background 0.3s ease",
+                      }}
+                    />
+                  ))}
+                </div>
+
+                {/* Next */}
+                <button
+                  onClick={() => swiperRef.current?.slideNext()}
+                  aria-label="Next slide"
+                  style={{
+                    width:"42px", height:"42px", borderRadius:"50%",
+                    border:"1.5px solid #bfdbfe", background:"#eff6ff",
+                    display:"flex", alignItems:"center", justifyContent:"center",
+                    cursor:"pointer", transition:"background 0.2s, border-color 0.2s, transform 0.2s",
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.background="#dbeafe"; e.currentTarget.style.borderColor="#93c5fd"; e.currentTarget.style.transform="scale(1.08)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background="#eff6ff"; e.currentTarget.style.borderColor="#bfdbfe"; e.currentTarget.style.transform="scale(1)"; }}
+                >
+                  <ChevronRight size={20} color="#1e40af" />
+                </button>
               </div>
             </div>
 
@@ -325,9 +333,6 @@ export default function GraduationSection() {
                 background:"linear-gradient(160deg,#f8faff,#eef3ff)",
                 borderBottom:"1px solid #e2e8f0",
               }}>
-                <h4 style={{ fontSize:"1.2rem", fontWeight:800, color:"#1e40af", marginBottom:"4px" }}>
-                  Book Free Demo
-                </h4>
                 <p style={{ fontSize:"12.5px", fontWeight:600, color:"#334155", marginBottom:"16px" }}>
                   In Just 30 Mins Live Meeting, you will get:
                 </p>
@@ -356,8 +361,8 @@ export default function GraduationSection() {
 
               {/* Calendar body */}
               <div style={{ padding:"22px 24px" }}>
-                <h5 style={{ fontSize:"14px", fontWeight:700, color:"#0f172a", marginBottom:"18px" }}>
-                  Select a date
+                <h5 style={{ fontSize:"14px", fontWeight:700, color:"#0f172a", marginBottom:"18px", textAlign:"center" }}>
+                  Select date
                 </h5>
 
                 <div style={{ display:"grid", gridTemplateColumns:"minmax(0,1fr)", gap:"20px" }} className="sm:grid-cols-[minmax(0,1fr)_160px]">
@@ -403,7 +408,6 @@ export default function GraduationSection() {
                               color: sel ? "#fff" : avail ? "#0f172a" : "#cbd5e1",
                               boxShadow: sel ? "0 3px 10px rgba(37,99,235,0.3)" : "none",
                               transition:"background 0.2s, color 0.2s",
-                              
                             }}
                             onMouseEnter={e => { if (avail && !sel) e.currentTarget.style.background="#eff6ff"; }}
                             onMouseLeave={e => { if (avail && !sel) e.currentTarget.style.background="transparent"; }}
@@ -465,13 +469,9 @@ export default function GraduationSection() {
                         )}
                       </>
                     ) : (
-                      <div style={{
-                        borderRadius:"12px", border:"1.5px dashed #e2e8f0",
-                        background:"#fff", padding:"20px 12px",
-                        textAlign:"center", color:"#94a3b8", fontSize:"12px",
-                      }}>
-                        <CalendarDays size={22} color="#cbd5e1" style={{ margin:"0 auto 8px" }} />
-                        Pick a date to see times.
+                      <div >
+                        {/* <CalendarDays size={22} color="#cbd5e1" style={{ margin:"0 auto 8px" }} />
+                        Pick a date to see times. */}
                       </div>
                     )}
                   </div>

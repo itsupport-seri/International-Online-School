@@ -65,7 +65,7 @@ const animationCSS = `
 const ctaLinks = [
   { label: "Book Free Demo",    href: "https://internationalschooling.org/demo",        primary: false, external: true },
   { label: "Request Callback",  href: "https://internationalschooling.org/callback",    primary: false, external: true },
-  { label: "Log In",            href: "https://sms.internationalschooling.org/international-schooling/common/login", primary: false, external: true },
+  // { label: "Log In",            href: "https://sms.internationalschooling.org/international-schooling/common/login", primary: false, external: true },
   { label: "Enroll Now",        href: "https://internationalschooling.org/enrollment",  primary: true , external: true },
 ];
 
@@ -133,18 +133,7 @@ export default function Navbar() {
               </span>
             </a>
 
-            {/* Center — Clock + hours */}
-            {/* ✅ was text-white/70 — now text-white */}
-            <div className="flex items-center gap-1.5 text-white">
-              <Clock size={11} className="shrink-0" />
-              {/* ✅ bumped font-medium → font-semibold for legibility */}
-              <span className="text-[10.5px] font-semibold tracking-wide">
-                Support available&nbsp;
-                {/* ✅ was font-semibold — now font-bold to stand out more */}
-                <span className="text-white font-bold">10:00 AM – 7:00 PM</span>
-                &nbsp;(UTC +08:00)
-              </span>
-            </div>
+            
 
             {/* Right — Call + Email chips */}
             <div className="flex items-center gap-1">
@@ -162,17 +151,7 @@ export default function Navbar() {
               {/* ✅ was text-white/25 (nearly invisible) — now text-white/60 */}
               <span className="text-white/60 text-xs mx-1">|</span>
 
-              <a href="mailto:info@internationalschooling.org"
-                className="contact-chip flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10"
-              >
-                {/* ✅ was text-white/80 — now text-white */}
-                <Mail size={11} className="text-white shrink-0" />
-                {/* ✅ was text-white/85 — now text-white */}
-                <span className="text-[11px] font-semibold text-white tracking-wide">
-                  info@internationalschooling.org
-                </span>
-              </a>
-
+            
               <a href="mailto:support@internationalschooling.org"
                 className="contact-chip flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10"
               >
