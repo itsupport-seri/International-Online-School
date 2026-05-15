@@ -139,7 +139,7 @@ export default function GraduationSection() {
         >
           <h2 style={{
             fontSize:"clamp(1.8rem,4vw,2.7rem)", fontWeight:800,
-            color:"#0f172a", lineHeight:1.18, letterSpacing:"-0.022em",
+            color:"#5b5b5b", lineHeight:1.18, letterSpacing:"-0.022em",
           }}>
             Graduation Ceremony 2025 –{" "}
             {/* CHANGED: removed gradient, now plain blue */}
@@ -315,7 +315,7 @@ export default function GraduationSection() {
             {/* Section heading */}
             <h3 style={{
               fontSize:"clamp(1.3rem,2.5vw,1.75rem)", fontWeight:800,
-              color:"#14532d", textAlign:"center", lineHeight:1.25,
+              color:"#5b5b5b", textAlign:"center", lineHeight:1.25,
             }}>
               Talk to Our Academic Experts
             </h3>

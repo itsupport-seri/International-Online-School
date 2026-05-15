@@ -149,7 +149,7 @@ export default function FAQSection() {
             style={{
               fontSize: "clamp(1.85rem, 3.6vw, 2.75rem)",
               fontWeight: 800,
-              color: "#0a0f1e",
+              color: "#5b5b5b",
               lineHeight: 1.15,
               margin: "0 0 12px",
               letterSpacing: "-0.02em",

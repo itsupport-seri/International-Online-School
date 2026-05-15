@@ -653,7 +653,7 @@ export default function Footer() {
         </div>
 
         {/* ── MAIN BODY ── */}
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "48px 24px 40px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "48px 24px 40px" }} >
 
           {/* ── DESKTOP GRID ── */}
           <div

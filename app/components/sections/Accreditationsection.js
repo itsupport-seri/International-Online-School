@@ -66,9 +66,9 @@ export default function AccreditationSection() {
 
           <h2
             id="home-accreditation-title"
-            className="font-[family-name:var(--font-display)] text-[1.85rem] sm:text-4xl font-extrabold text-slate-900 leading-tight"
+            className="font-[family-name:var(--font-display)] text-[1.85rem] sm:text-4xl font-extrabold  leading-tight"
           >
-            <span className="text-slate-600">Fully Accredited</span>{" "}
+            <span style={{ color: "#5b5b5b" }}>Fully Accredited</span>{" "}
             <i className="text-slate-400 not-italic">&</i>{" "}
 
             <span className="relative inline-block text-blue-600">

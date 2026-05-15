@@ -614,7 +614,7 @@ const [titleAnimated, setTitleAnimated] = useState(false);
         {/* ── Header ── */}
         <div className="adm-head">
           <div ref={eyebrowRef} className="adm-eyebrow">✦ Simple 4-Step Process</div>
-          <h2 ref={titleRef} className="adm-h2">
+          <h2 ref={titleRef} className="adm-h2" style={{ color: "#5b5b5b" }}>
             Complete
             <em className="relative inline-block" style={{ fontStyle: "normal" }}>
               Enrollment

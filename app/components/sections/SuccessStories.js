@@ -211,7 +211,7 @@ export default function SuccessStories() {
         >
           <h2 style={{
             fontSize: "clamp(2rem,4.5vw,3rem)", fontWeight: 800,
-            color: "#0a0f1e", lineHeight: 1.15, letterSpacing: "-0.025em",
+            color: "#5b5b5b", lineHeight: 1.15, letterSpacing: "-0.025em",
             marginBottom: "18px",
           }}>
             Success{" "}

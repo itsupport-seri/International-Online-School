@@ -175,7 +175,7 @@ export default function ReviewsSection() {
             transition: "opacity 0.7s ease, transform 0.7s ease",
           }}
         >
-          <h2 className="font-[family-name:var(--font-display)] text-[1.85rem] sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+          <h2 className="font-[family-name:var(--font-display)] text-[1.85rem] sm:text-4xl md:text-5xl font-extrabold  leading-tight" style={{ color: "#5b5b5b" }}>
             Trusted by Families{" "}
             {/* CHANGED: text-emerald-700 → text-blue-700 */}
             <span className="relative inline-block text-blue-700">
