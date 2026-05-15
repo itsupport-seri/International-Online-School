@@ -91,9 +91,6 @@ export default function HeroSection() {
   return (
     <>
       <style>{`
-       
-
-        /* ══ Ken Burns ══ */
         @keyframes kb-zoom-in   { from{transform:scale(1) translateX(0)}     to{transform:scale(1.13) translateX(-1%)} }
         @keyframes kb-zoom-out  { from{transform:scale(1.13) translateX(0)}  to{transform:scale(1) translateX(1%)}    }
         @keyframes kb-pan-left  { from{transform:scale(1.1) translateX(2%)}  to{transform:scale(1.1) translateX(-2%)} }
@@ -104,7 +101,7 @@ export default function HeroSection() {
         .kb-pan-left  { animation: kb-pan-left  ${kbDur}ms ease-in-out both; }
         .kb-pan-right { animation: kb-pan-right ${kbDur}ms ease-in-out both; }
 
-        /* ══ Slide stack — z 1/2/3 ══ */
+       
         .hs-slide {
           position: absolute; inset: 0;
           z-index: 1; opacity: 0;
@@ -129,7 +126,7 @@ export default function HeroSection() {
           pointer-events: none;
         }
 
-        /* ══ Segmented progress bar (desktop) ══ */
+  
         .hs-seg {
           height: 3px; border-radius: 2px;
           background: rgba(255,255,255,0.22);
@@ -144,7 +141,7 @@ export default function HeroSection() {
           transition: width 0.06s linear;
         }
 
-        /* ══ Arrow buttons ══ */
+
         .hs-btn {
           width: 42px; height: 42px; border-radius: 50%;
           border: 1.5px solid rgba(255,255,255,0.22);
@@ -173,7 +170,7 @@ export default function HeroSection() {
           }
         }
 
-        /* ══ Controls wrapper ══ */
+      
         .hs-controls {
           position: absolute;
           bottom: 20px; right: 92px;
@@ -186,14 +183,14 @@ export default function HeroSection() {
           .hs-controls { right: 12px; bottom: 16px; gap: 7px; }
         }
 
-        /* ══ Show/hide helpers ══ */
+    
         .hs-desktop { display: flex; }
         @media (max-width: 639px) { .hs-desktop { display: none !important; } }
 
         .hs-mobile-only { display: none; }
         @media (max-width: 639px) { .hs-mobile-only { display: flex; } }
 
-        /* ══ Mobile dot indicators ══ */
+  
         .hs-mdot {
           width: 5px; height: 5px; border-radius: 50%;
           background: rgba(255,255,255,0.28);
@@ -202,7 +199,7 @@ export default function HeroSection() {
         }
         .hs-mdot.active { background: #fff; transform: scale(1.35); }
 
-        /* ══ Hero text entrance ══ */
+      
         .h-line  { animation: htIn 0.65s cubic-bezier(0.22,1,0.36,1) 0.05s both; }
         .h-title { animation: htIn 0.65s cubic-bezier(0.22,1,0.36,1) 0.12s both; }
         .h-badge { animation: htIn 0.65s cubic-bezier(0.22,1,0.36,1) 0.20s both; }
@@ -212,14 +209,14 @@ export default function HeroSection() {
           to   { opacity:1; transform:translateY(0);    }
         }
 
-        /* ══ Stats entrance ══ */
+    
         .hs-stat { animation: hsStatIn 0.6s cubic-bezier(0.22,1,0.36,1) both; }
         @keyframes hsStatIn {
           from { opacity:0; transform:translateY(14px); }
           to   { opacity:1; transform:translateY(0);    }
         }
 
-        /* ══ Right accent strip (desktop only) ══ */
+      
         .hs-accent {
           position: absolute; right:0; top:0; bottom:0;
           width: 4px; z-index: 25; pointer-events: none;
@@ -228,14 +225,14 @@ export default function HeroSection() {
         }
         @media (max-width: 639px) { .hs-accent { display: none; } }
 
-        /* ══ Stat divider ══ */
+       
         .hs-divider {
           width: 1px; height: 28px;
           background: rgba(255,255,255,0.14);
           flex-shrink: 0;
         }
 
-        /* ══ Counter font ══ */
+ 
         .hs-count {
           font-family: 'Playfair Display', Georgia, serif;
           font-variant-numeric: tabular-nums;
@@ -391,7 +388,7 @@ export default function HeroSection() {
           </div>
 
           {/* Dot indicators — mobile only */}
-          <div className="hs-mobile-only items-center gap-[5px]">
+          <div className="hs-mobile-only items-center gap-[5px] pe-4">
             {SLIDES.map((_, i) => (
               <button
                 key={i}
